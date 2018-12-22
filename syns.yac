@@ -2,7 +2,7 @@
 #include "defs.h"
 #define YYSTYPE Cell *
 %}
-%token	ID CALL RETURN NUMBER STRING EQUAL LPAR RPAR LBRA RBRA LARROW RALLOW COMMA
+%token	ID CALL RETURN IF ELSE NUMBER STRING EQUAL LPAR RPAR LBRA RBRA LARROW RALLOW COMMA
 %%
 
 Program
@@ -13,11 +13,15 @@ Statements
 Statement
 	: Assign
 	| Return
+	| If
 	| Block
 	| Expression
 
 Return
     : RETURN Expression                  { $$ = node("return", $2); }
+If
+    : IF Expression Block ELSE Block     { $$ = node("if", cons($2, cons($3, $5))); }
+    | IF Expression Block     { $$ = node("if", cons($2, cons($3, leaf("NOP", "")))); }
 Assign
 	: Variable EQUAL Expression { $$ = node("=", cons($1, $3)); }
 
