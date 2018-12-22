@@ -1,0 +1,10 @@
+  
+    node(= 
+        cons(
+            leaf(ID a)
+            leaf(NUMBER 1)))
+	  
+    node(= 
+        cons(
+            leaf(ID b)
+            leaf(NUMBER 2)))
