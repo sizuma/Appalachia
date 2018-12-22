@@ -4,22 +4,25 @@ int linecounter = 1;
 %option nounput
 %%
 
-[a-zA-Z_][a-zA-Z0-9_]*			{ return(ID); }
+"call"                          { return(CALL); }
+"return"                        { return(RETURN); }
+[a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
 [0-9]+							{ return(NUMBER); }
-[0-9]*"."[0-9]+					{ return(NUMBER); }
+[0-9]+"."[0-9]+					{ return(NUMBER); }
 \"[^\"]*\" 						{ return(STRING); }
-"="					{ return(EQUAL); }
 
+"="					{ return(EQUAL); }
 "("					{ return(LPAR); }
 ")"					{ return(RPAR); }
 "{"					{ return(LBRA); }
 "}"					{ return(RBRA); }
-
-
+"<-"				{ return(LARROW); }
+"->"				{ return(RALLOW); }
+","					{ return(COMMA); }
 "\n"				{ linecounter++; }
 "\r\n"				{ linecounter++; }
 "\r"				{ linecounter++; }
-
+" "|"\t"				{ }
 "/*"					{ comment(); }
 
 %%

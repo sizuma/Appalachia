@@ -1,2 +1,3 @@
-a = 1
-	b = 2
+b = call(b, a, b, call("ab", 2))
+
+return 1
