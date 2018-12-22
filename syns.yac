@@ -21,11 +21,6 @@ Expression
 	: Variable	{ $$ = $1; }
 	| Constant	{ $$ = $1; }
 
-BlockBody
-	: Statement	{ $$ = $1; }
-	| BlockBody Statement	{ $$ = $2; }
-Block
-	: LBRA BlockBody RBRA { $$ = $2; }
 Variable
 	: ID				{ $$ = leaf("ID", yytext); }
 Constant
