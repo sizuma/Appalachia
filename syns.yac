@@ -13,6 +13,7 @@ Statements
 Statement
 	: Assign
 	| Return
+	| Block
 	| Expression
 
 Return
@@ -20,6 +21,11 @@ Return
 Assign
 	: Variable EQUAL Expression { $$ = node("=", cons($1, $3)); }
 
+Block
+    : LBRA BlockBody RBRA { $$ = node("block", $2); }
+BlockBody
+    : Statement
+    | BlockBody Statement   { $$ = cons($1, $2); }
 Expression
 	: Call
 	| Variable
