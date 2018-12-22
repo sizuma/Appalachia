@@ -38,6 +38,10 @@ Cell *leaf(char *car, char *cdr) {
 	return(pointer);
 }
 
+Cell* nop() {
+    return leaf("NOP", "");
+}
+
 void tree(Cell *pointer) {
 	visit(pointer, 1);
 	printf("\n");
