@@ -1,6 +1,9 @@
-identity = (a) -> {
-    a
+f = () -> {
+    0
 }
 
-
-print(identity(1), identity(2), identity(1), identity(2))
+a = if f() {
+    1
+} else {
+    2
+}

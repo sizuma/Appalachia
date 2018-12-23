@@ -14,7 +14,7 @@ public class Leaf {
 
         switch (car) {
             case "NUMBER":
-                return new Value(Value.Kind.NUMBER, Integer.valueOf(cdr, 10));
+                return new Value(Value.Kind.NUMBER, Double.valueOf(cdr));
             case "STRING":
                 return new Value(Value.Kind.STRING, cdr);
             case "ID":

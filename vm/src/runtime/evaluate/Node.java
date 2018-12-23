@@ -22,6 +22,8 @@ public class Node {
                 return Node.lambda(runtime, block, cdr);
             case "call":
                 return Node.call(runtime, block, cdr);
+            case "if":
+                return Node.ifNode(runtime, block, cdr);
         }
 
         return Value.nop;
@@ -76,7 +78,6 @@ public class Node {
         var inLambdaBlock = body.getBlock().newChildBlock();
 
         var actualArgs = Node.evaluateArgs(runtime, block, cdr);
-        System.out.println(actualArgs);
         if (body.getBuiltIn()) {
             return body.performBuildIn(actualArgs);
         }
@@ -116,7 +117,8 @@ public class Node {
     private static List<Value> evaluateArgs(Runtime runtime, Block block, Cell cell) {
         switch (cell.getKind()) {
             case LEAF:
-                return List.of(Leaf.evaluateLeaf(runtime, block, cell));
+                var leafValue = Leaf.evaluateLeaf(runtime, block, cell);
+                return leafValue.equals(Value.nop) ? List.of() : List.of(leafValue);
             case NODE:
                 var nodeOperator = (String)cell.getCar();
                 nodeOperator = nodeOperator.strip();
@@ -131,5 +133,21 @@ public class Node {
                 return list;
         }
         return List.of();
+    }
+
+    static Value ifNode(Runtime runtime, Block block, Cell cell) {
+        var car = (Cell) cell.getCar();
+        var cdr = (Cell) cell.getCdr();
+
+        var condition = runtime.evaluate(block, car);
+        var isTrueCondition = true;
+        if (condition.getObject().equals(0.0)) isTrueCondition = false;
+        if (condition.getObject().equals("")) isTrueCondition = false;
+
+        if (isTrueCondition) {
+            return runtime.evaluate(block, (Cell) cdr.getCar());
+        } else {
+            return runtime.evaluate(block, (Cell) cdr.getCdr());
+        }
     }
 }

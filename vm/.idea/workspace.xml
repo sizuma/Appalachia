@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00c257f8-0d89-4fc0-ab06-c9733a969bbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../src.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/vm/runtime/LambdaBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vm/runtime/LambdaBody.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/vm/runtime/VM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vm/runtime/VM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/vm/runtime/evaluate/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vm/runtime/evaluate/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/LambdaBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/LambdaBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/evaluate/Leaf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/evaluate/Leaf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/evaluate/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/evaluate/Node.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,23 +25,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="124" />
+          <entry key="java" value="129" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="124" />
+          <entry key="JAVA" value="129" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="9" />
-          <entry key="java" value="9153" />
+          <entry key="java" value="9621" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="9153" />
+          <entry key="JAVA" value="9621" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
@@ -59,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="118" column="69" selection-start-line="118" selection-start-column="69" selection-end-line="118" selection-end-column="69" />
+            <state relative-caret-position="180">
+              <caret line="121" column="84" selection-start-line="121" selection-start-column="84" selection-end-line="121" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,10 +62,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/runtime/VM.java">
+        <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+            <state relative-caret-position="363">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,7 +108,6 @@
         <option value="$PROJECT_DIR$/src/runtime/Cell.java" />
         <option value="$PROJECT_DIR$/src/runtime/Value.java" />
         <option value="$PROJECT_DIR$/src/runtime/Runtime.java" />
-        <option value="$PROJECT_DIR$/src/runtime/evaluate/Leaf.java" />
         <option value="$PROJECT_DIR$/src/runtime/Compiler.java" />
         <option value="$PROJECT_DIR$/src/runtime/Block.java" />
         <option value="$PROJECT_DIR$/src/runtime/Parser.java" />
@@ -124,6 +116,7 @@
         <option value="$PROJECT_DIR$/src/runtime/RootBlock.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/Print.java" />
         <option value="$PROJECT_DIR$/src/runtime/VM.java" />
+        <option value="$PROJECT_DIR$/src/runtime/evaluate/Leaf.java" />
         <option value="$PROJECT_DIR$/src/runtime/evaluate/Node.java" />
       </list>
     </option>
@@ -135,9 +128,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="599" />
-    <option name="y" value="131" />
-    <option name="width" value="1343" />
+    <option name="x" value="628" />
+    <option name="y" value="121" />
+    <option name="width" value="1352" />
     <option name="height" value="863" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -168,6 +161,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="runtime" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="vm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="evaluate" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -177,9 +177,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545550243265" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545551547935" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -234,12 +237,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545529053224</updated>
-      <workItem from="1545529067186" duration="20863000" />
+      <workItem from="1545529067186" duration="22171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20863000" />
+    <option name="totallyTimeSpent" value="22171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="599" y="131" width="1343" height="863" extended-state="0" />
@@ -260,7 +263,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992" visible="true" weight="0.3605707" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994812" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -363,16 +366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2">
@@ -452,15 +445,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="118" column="69" selection-start-line="118" selection-start-column="69" selection-end-line="118" selection-end-column="69" />
+        <state relative-caret-position="363">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="121" column="84" selection-start-line="121" selection-start-column="84" selection-end-line="121" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>vm</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

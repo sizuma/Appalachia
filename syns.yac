@@ -13,7 +13,6 @@ Statements
 Statement
 	: Assign
 	| Return
-	| If
 	| Expression
 
 Return
@@ -35,6 +34,7 @@ Expression
 	| Constant
 	| Lambda
 	| Block
+	| If
 Expressions
 	: Expression
 	| Expressions COMMA Expression	{ $$ = node(",", cons($1, $3)); }
