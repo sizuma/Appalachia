@@ -44,6 +44,7 @@ public class Parser {
 
     Cell parseLeaf(String leafString) throws IOException {
         var leaf = leafString.substring(leafString.indexOf('(')+1, leafString.indexOf(')'));
+        if (leaf.strip().equals("NOP")) return new Cell("NOP", null, Cell.Kind.LEAF);
         var each = leaf.split(" ");
         return new Cell(each[0], each[1], Cell.Kind.LEAF);
     }
