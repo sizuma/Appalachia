@@ -1,14 +1,26 @@
 package runtime;
 
 import runtime.builtin.BuiltIn;
+import runtime.builtin.Equals;
+import runtime.builtin.NotEquals;
 import runtime.builtin.Print;
+import runtime.builtin.math.*;
 
 import java.lang.reflect.Constructor;
 import java.util.Optional;
 
 public class RootBlock extends Block {
     private static final Class<?>[] builtIns = {
-            Print.class
+            Print.class,
+            Equals.class,
+            NotEquals.class,
+
+            Plus.class,
+            Minus.class,
+            Multiple.class,
+            Divide.class,
+            GreaterThan.class,
+            SmallerThan.class,
     };
     public RootBlock() {
         super(Optional.empty());

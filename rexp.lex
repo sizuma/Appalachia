@@ -9,10 +9,11 @@ int linecounter = 1;
 "if"                            { return(IF); }
 "else"                          { return(ELSE); }
 [a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
-[0-9]+							{ return(NUMBER); }
-[0-9]+"."[0-9]+					{ return(NUMBER); }
+"-"*[0-9]+							{ return(NUMBER); }
+"-"*[0-9]+"."[0-9]+					{ return(NUMBER); }
 \"[^\"]*\" 						{ return(STRING); }
-
+"=="                { return(ID); }
+"!="                { return(ID); }
 "="					{ return(EQUAL); }
 "("					{ return(LPAR); }
 ")"					{ return(RPAR); }
@@ -26,6 +27,9 @@ int linecounter = 1;
 "\r"				{ linecounter++; }
 " "|"\t"				{ }
 "/*"					{ comment(); }
+
+["+" "-" "*" "/" "<" ">"]                  { return(ID); }
+
 
 %%
 
