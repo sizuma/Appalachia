@@ -1,9 +1,6 @@
-a = (a, b) -> {
-    () -> {
-        b
-    }
+identity = (a) -> {
+    a
 }
 
-b = a(1)
 
-c = b() // c = 2;
+print(identity(1), identity(2), identity(1), identity(2))

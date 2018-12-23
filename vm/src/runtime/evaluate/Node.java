@@ -75,11 +75,11 @@ public class Node {
         var body = (LambdaBody) lambda.getObject();
         var inLambdaBlock = body.getBlock().newChildBlock();
 
-        var actualArgs = Node.listLeave(cdr)
-                .stream()
-                .map(leaf -> Leaf.evaluateLeaf(runtime, block, leaf))
-                .filter(value -> !value.equals(Value.nop))
-                .collect(Collectors.toList());
+        var actualArgs = Node.evaluateArgs(runtime, block, cdr);
+        System.out.println(actualArgs);
+        if (body.getBuiltIn()) {
+            return body.performBuildIn(actualArgs);
+        }
         var parameters = Node.listLeave((Cell) body.getLambda().getCar())
                 .stream()
                 .filter(leaf -> !leaf.getCar().equals("NOP"))
@@ -113,4 +113,23 @@ public class Node {
         return List.of();
     }
 
+    private static List<Value> evaluateArgs(Runtime runtime, Block block, Cell cell) {
+        switch (cell.getKind()) {
+            case LEAF:
+                return List.of(Leaf.evaluateLeaf(runtime, block, cell));
+            case NODE:
+                var nodeOperator = (String)cell.getCar();
+                nodeOperator = nodeOperator.strip();
+                if (nodeOperator.equals(",")) {
+                    return Node.evaluateArgs(runtime, block, (Cell) cell.getCdr());
+                }
+                return List.of(Node.evaluateNode(runtime, block, cell));
+            case CONS:
+                var list = new ArrayList<Value>();
+                list.addAll(Node.evaluateArgs(runtime, block, (Cell) cell.getCar()));
+                list.addAll(Node.evaluateArgs(runtime, block, (Cell) cell.getCdr()));
+                return list;
+        }
+        return List.of();
+    }
 }
