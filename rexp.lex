@@ -21,6 +21,7 @@ int linecounter = 1;
 "}"					{ return(RBRA); }
 "<-"				{ return(LARROW); }
 "->"				{ return(RALLOW); }
+"."                 { return(DOT); }
 ","					{ return(COMMA); }
 "\n"				{ linecounter++; }
 "\r\n"				{ linecounter++; }

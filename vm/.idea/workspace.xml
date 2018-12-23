@@ -4,8 +4,8 @@
     <list default="true" id="00c257f8-0d89-4fc0-ab06-c9733a969bbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rexp.lex" beforeDir="false" afterPath="$PROJECT_DIR$/../rexp.lex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/runtime/RootBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/RootBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../src.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../syns.yac" beforeDir="false" afterPath="$PROJECT_DIR$/../syns.yac" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/runtime/builtin/Equals.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -73,15 +73,6 @@
                 <element signature="e#153#154#0" expanded="true" />
                 <element signature="e#191#192#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/runtime/builtin/NotEquals.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -157,9 +148,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="563" />
-    <option name="y" value="85" />
+    <option name="y" value="97" />
     <option name="width" value="1352" />
-    <option name="height" value="863" />
+    <option name="height" value="851" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -212,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545555055632" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545562541111" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -274,12 +265,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545529053224</updated>
-      <workItem from="1545529067186" duration="25174000" />
+      <workItem from="1545529067186" duration="25457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25174000" />
+    <option name="totallyTimeSpent" value="25457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -299,7 +290,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35648856" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35648856" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" weight="0.32814527" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -308,7 +299,7 @@
       <window_info anchor="bottom" id="Event Log" sideWeight="0.5008" side_tool="true" weight="0.32908458" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992" visible="true" weight="0.3605707" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992" visible="true" weight="0.3605707" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994812" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -587,6 +578,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/builtin/NotEquals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/builtin/Equals.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -596,13 +594,6 @@
             <element signature="e#153#154#0" expanded="true" />
             <element signature="e#191#192#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/builtin/NotEquals.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
