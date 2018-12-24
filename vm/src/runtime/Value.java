@@ -40,4 +40,12 @@ public class Value {
     public String toString() {
         return kind+"{" + object +"}";
     }
+
+    public boolean isTrue() {
+        var isTrueCondition = true;
+        if (this.getObject().equals(0.0)) isTrueCondition = false;
+        if (this.getObject().equals("")) isTrueCondition = false;
+        if (this.getKind() == Kind.NOP) isTrueCondition = false;
+        return isTrueCondition;
+    }
 }

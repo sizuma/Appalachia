@@ -140,11 +140,8 @@ public class Node {
         var cdr = cell.getCdrCell();
 
         var condition = runtime.evaluate(block, car);
-        var isTrueCondition = true;
-        if (condition.getObject().equals(0.0)) isTrueCondition = false;
-        if (condition.getObject().equals("")) isTrueCondition = false;
 
-        if (isTrueCondition) {
+        if (condition.isTrue()) {
             return runtime.evaluate(block, cdr.getCarCell());
         } else {
             return runtime.evaluate(block, cdr.getCdrCell());
