@@ -12,6 +12,8 @@ public class Value {
     private final Object object;
 
     static public Value nop = new Value(Kind.NOP, null);
+    static public Value True = new Value(Kind.NUMBER, 1.0);
+    static public Value False = new Value(Kind.NUMBER, 0.0);
 
     public Value(Kind kind, Object object) {
         this.kind = kind;

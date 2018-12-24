@@ -18,6 +18,6 @@ public class Or extends BuiltIn {
             result = value.isTrue();
             if (result) break;
         }
-        return new Value(Value.Kind.NUMBER, result ? 1.0 : 0.0);
+        return result ? Value.True : Value.False;
     }
 }

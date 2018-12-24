@@ -13,6 +13,6 @@ public class Assert extends BinaryOperation {
     Value performBinaryOperator(Object _0, Object _1) {
         var isEqual = _0.equals(_1);
         if (!isEqual) throw new RuntimeException("assertion error: "+_0 + " != " + _1);
-        return new Value(Value.Kind.NUMBER, 1.0);
+        return Value.True;
     }
 }
