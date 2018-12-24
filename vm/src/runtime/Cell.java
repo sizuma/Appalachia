@@ -26,6 +26,26 @@ public class Cell {
         return this.kind;
     }
 
+    public Cell getCarCell() {
+        assert this.getKind() == Kind.CONS;
+        return (Cell) this.getCar();
+    }
+
+    public String getCarString() {
+        assert this.getKind() == Kind.NODE || this.getKind() == Kind.LEAF;
+        return ((String) this.getCar()).strip();
+    }
+
+    public Cell getCdrCell() {
+        assert this.getKind() == Kind.CONS || this.getKind() == Kind.NODE;
+        return (Cell) this.getCdr();
+    }
+
+    public String getCdrString() {
+        assert this.getKind() == Kind.LEAF;
+        return ((String) this.getCdr()).strip();
+    }
+
     @Override
     public String toString() {
         return kind+"{" +
