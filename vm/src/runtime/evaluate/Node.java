@@ -11,8 +11,8 @@ public class Node {
 
     static public Value evaluateNode(Runtime runtime, Block block, Cell cell) {
         assert cell.getKind() == Cell.Kind.NODE;
-        var action = (String) cell.getCar();
-        var cdr = (Cell) cell.getCdr();
+        var action = cell.getCarString();
+        var cdr = cell.getCdrCell();
         switch (action) {
             case "=":
                 return Node.assign(runtime, block, cdr);
@@ -31,12 +31,12 @@ public class Node {
 
     static Value assign(Runtime runtime, Block block, Cell cons) {
         assert cons.getKind() == Cell.Kind.CONS;
-        var car = (Cell) cons.getCar();
-        var cdr = (Cell) cons.getCdr();
+        var car = cons.getCarCell();
+        var cdr = cons.getCdrCell();
 
         assert car.getKind() == Cell.Kind.LEAF;
         assert car.getCar().equals("ID");
-        var variableName = (String) car.getCdr();
+        var variableName = car.getCdrString();
         var variableValue = runtime.evaluate(block, cdr);
         block.declareVariable(variableName, variableValue);
         runtime.log("declare variable " + variableName + ":" + variableValue + " in " + block);
@@ -51,8 +51,8 @@ public class Node {
     }
 
     static private Value depthFirstVisit(Runtime runtime, Block block, Cell cons) {
-        var car = (Cell) cons.getCar();
-        var cdr = (Cell) cons.getCdr();
+        var car = cons.getCarCell();
+        var cdr = cons.getCdrCell();
 
         if (car.getKind() == Cell.Kind.CONS) {
             Node.depthFirstVisit(runtime, block, car);
@@ -67,9 +67,9 @@ public class Node {
     }
 
     static Value call(Runtime runtime, Block block, Cell cons) {
-        var car = (Cell) cons.getCar();
-        var name = ((String) car.getCdr()).strip();
-        var cdr = (Cell) cons.getCdr();
+        var car = cons.getCarCell();
+        var name = car.getCdrString();
+        var cdr = cons.getCdrCell();
         var mayLambda = block.getVariable(name);
         if (mayLambda.isEmpty()) throw new RuntimeException(name + " is not declared");
         var lambda = mayLambda.get();
@@ -81,7 +81,7 @@ public class Node {
         if (body.getBuiltIn()) {
             return body.performBuildIn(actualArgs);
         }
-        var parameters = Node.listLeave((Cell) body.getLambda().getCar())
+        var parameters = Node.listLeave(body.getLambda().getCarCell())
                 .stream()
                 .filter(leaf -> !leaf.getCar().equals("NOP"))
                 .collect(Collectors.toList());
@@ -92,7 +92,7 @@ public class Node {
         for(int index=0; index<actualArgs.size(); index++) {
             var arg = actualArgs.get(index);
             var param = parameters.get(index);
-            var paramName = (String) param.getCdr();
+            var paramName = param.getCdrString();
             inLambdaBlock.declareVariable(paramName.strip(), arg);
         }
 
@@ -107,8 +107,8 @@ public class Node {
                 return listLeave((Cell) cell.getCdr());
             case CONS:
                 var list = new ArrayList<Cell>();
-                list.addAll(listLeave((Cell) cell.getCar()));
-                list.addAll(listLeave((Cell) cell.getCdr()));
+                list.addAll(listLeave(cell.getCarCell()));
+                list.addAll(listLeave(cell.getCdrCell()));
                 return list;
         }
         return List.of();
@@ -128,16 +128,16 @@ public class Node {
                 return List.of(Node.evaluateNode(runtime, block, cell));
             case CONS:
                 var list = new ArrayList<Value>();
-                list.addAll(Node.evaluateArgs(runtime, block, (Cell) cell.getCar()));
-                list.addAll(Node.evaluateArgs(runtime, block, (Cell) cell.getCdr()));
+                list.addAll(Node.evaluateArgs(runtime, block, cell.getCarCell()));
+                list.addAll(Node.evaluateArgs(runtime, block, cell.getCdrCell()));
                 return list;
         }
         return List.of();
     }
 
     static Value ifNode(Runtime runtime, Block block, Cell cell) {
-        var car = (Cell) cell.getCar();
-        var cdr = (Cell) cell.getCdr();
+        var car = cell.getCarCell();
+        var cdr = cell.getCdrCell();
 
         var condition = runtime.evaluate(block, car);
         var isTrueCondition = true;
@@ -145,9 +145,9 @@ public class Node {
         if (condition.getObject().equals("")) isTrueCondition = false;
 
         if (isTrueCondition) {
-            return runtime.evaluate(block, (Cell) cdr.getCar());
+            return runtime.evaluate(block, cdr.getCarCell());
         } else {
-            return runtime.evaluate(block, (Cell) cdr.getCdr());
+            return runtime.evaluate(block, cdr.getCdrCell());
         }
     }
 }

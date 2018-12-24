@@ -43,7 +43,8 @@ public class Cell {
 
     public String getCdrString() {
         assert this.getKind() == Kind.LEAF;
-        return ((String) this.getCdr()).strip();
+        String cdr = (String) this.getCdr();
+        return cdr == null ? null : cdr.strip();
     }
 
     @Override

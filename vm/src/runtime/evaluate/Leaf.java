@@ -9,8 +9,8 @@ public class Leaf {
 
     static public Value evaluateLeaf(Runtime runtime, Block block, Cell cell) {
         assert cell.getKind() == Cell.Kind.LEAF;
-        var car = (String)cell.getCar();
-        var cdr = (String)cell.getCdr();
+        var car = cell.getCarString();
+        var cdr = cell.getCdrString();
 
         switch (car) {
             case "NUMBER":
