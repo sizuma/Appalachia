@@ -6,7 +6,7 @@ int linecounter = 1;
 
 "call"                          { return(CALL); }
 "else"                          { return(ELSE); }
-[a-zA-Z][a-zA-Z0-9"."]*			{ return(ID); }
+[a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
 "-"*[0-9]+							{ return(NUMBER); }
 "-"*[0-9]+"."[0-9]+					{ return(NUMBER); }
 \"[^\"]*\" 						{ return(STRING); }
