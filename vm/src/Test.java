@@ -22,6 +22,7 @@ public class Test {
             vm.interpret(reader);
             System.out.println("success");
         } catch (Exception e) {
+            System.err.println("fail test: "+srcPath);
             e.printStackTrace();
         }
     }
