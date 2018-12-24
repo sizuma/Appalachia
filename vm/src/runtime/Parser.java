@@ -46,6 +46,13 @@ public class Parser {
         var leaf = leafString.substring(leafString.indexOf('(')+1, leafString.indexOf(')'));
         if (leaf.strip().equals("NOP")) return new Cell("NOP", null, Cell.Kind.LEAF);
         var each = leaf.split(" ");
-        return new Cell(each[0], each[1], Cell.Kind.LEAF);
+        var build = new StringBuilder();
+        for(int index=1; index<each.length; index++) {
+            build.append(each[index]);
+            if (index < each.length-1) {
+                build.append(' ');
+            }
+        }
+        return new Cell(each[0], build.toString(), Cell.Kind.LEAF);
     }
 }

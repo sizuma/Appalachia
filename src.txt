@@ -1,0 +1,12 @@
+isEven = (x) -> {
+    mod = %(x, 2)
+    ==(0.0, mod)
+}
+
+x = 1
+
+if isEven(x) {
+    print("even")
+} else {
+    print("not even")
+}

@@ -5,7 +5,13 @@
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rexp.lex" beforeDir="false" afterPath="$PROJECT_DIR$/../rexp.lex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../src.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../syns.yac" beforeDir="false" afterPath="$PROJECT_DIR$/../syns.yac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vm/runtime/RootBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vm/runtime/RootBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vm/runtime/builtin/Equals.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vm/runtime/builtin/Equals.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/RootBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/RootBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/builtin/Equals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/builtin/Equals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runtime/builtin/NotEquals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/builtin/NotEquals.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,23 +33,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="159" />
+          <entry key="java" value="169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="159" />
+          <entry key="JAVA" value="169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="27" />
-          <entry key="java" value="10154" />
+          <entry key="java" value="10358" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10154" />
+          <entry key="JAVA" value="10358" />
           <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
@@ -52,10 +58,34 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/runtime/RootBlock.java">
+        <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="144">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/runtime/VM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,14 +94,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/runtime/builtin/Equals.java">
+        <entry file="file://$PROJECT_DIR$/src/runtime/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+            <state relative-caret-position="299">
+              <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#153#154#0" expanded="true" />
-                <element signature="e#191#192#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,13 +143,11 @@
         <option value="$PROJECT_DIR$/src/runtime/Runtime.java" />
         <option value="$PROJECT_DIR$/src/runtime/Compiler.java" />
         <option value="$PROJECT_DIR$/src/runtime/Block.java" />
-        <option value="$PROJECT_DIR$/src/runtime/Parser.java" />
         <option value="$PROJECT_DIR$/src/runtime/LambdaBody.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/BuiltIn.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/Print.java" />
         <option value="$PROJECT_DIR$/src/runtime/VM.java" />
         <option value="$PROJECT_DIR$/src/runtime/evaluate/Leaf.java" />
-        <option value="$PROJECT_DIR$/src/runtime/evaluate/Node.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/CalcNumber.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/Plus.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/math/Plus.java" />
@@ -134,9 +160,12 @@
         <option value="$PROJECT_DIR$/src/runtime/builtin/math/SmallerThan.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/BinaryOperation.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/math/BinaryOperation.java" />
-        <option value="$PROJECT_DIR$/src/runtime/builtin/Equals.java" />
+        <option value="$PROJECT_DIR$/src/runtime/builtin/math/Mod.java" />
         <option value="$PROJECT_DIR$/src/runtime/RootBlock.java" />
+        <option value="$PROJECT_DIR$/src/runtime/evaluate/Node.java" />
+        <option value="$PROJECT_DIR$/src/runtime/builtin/Equals.java" />
         <option value="$PROJECT_DIR$/src/runtime/builtin/NotEquals.java" />
+        <option value="$PROJECT_DIR$/src/runtime/Parser.java" />
       </list>
     </option>
   </component>
@@ -147,8 +176,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="563" />
-    <option name="y" value="97" />
+    <option name="x" value="505" />
+    <option name="y" value="221" />
     <option name="width" value="1352" />
     <option name="height" value="851" />
   </component>
@@ -203,7 +232,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545562541111" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545618619389" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -212,8 +241,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="runtime.builtin" />
       <recent name="runtime.builtin.math" />
+      <recent name="runtime.builtin" />
       <recent name="cell" />
     </key>
   </component>
@@ -265,12 +294,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545529053224</updated>
-      <workItem from="1545529067186" duration="25457000" />
+      <workItem from="1545529067186" duration="27439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25457000" />
+    <option name="totallyTimeSpent" value="27439000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -282,7 +311,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="563" y="85" width="1352" height="863" extended-state="0" />
+    <frame x="505" y="221" width="1352" height="851" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -299,7 +328,7 @@
       <window_info anchor="bottom" id="Event Log" sideWeight="0.5008" side_tool="true" weight="0.32908458" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992" visible="true" weight="0.3605707" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4992" visible="true" weight="0.3662714" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994812" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -312,7 +341,7 @@
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24961832" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
@@ -321,6 +350,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/cell/Node.java">
@@ -403,16 +436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/LambdaBody.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -432,16 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Value.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -451,16 +464,6 @@
             <element signature="e#412#413#0" expanded="true" />
             <element signature="e#445#446#0" expanded="true" />
             <element signature="e#474#475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/VM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -479,16 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="88" column="67" lean-forward="true" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -568,31 +561,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/builtin/math/Mod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/RootBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="135">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/builtin/NotEquals.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/builtin/Equals.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+        <state relative-caret-position="90">
+          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#153#154#0" expanded="true" />
             <element signature="e#191#192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/builtin/NotEquals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Leaf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/VM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/evaluate/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -19,6 +19,7 @@ public class RootBlock extends Block {
             Minus.class,
             Multiple.class,
             Divide.class,
+            Mod.class,
             GreaterThan.class,
             SmallerThan.class,
     };
