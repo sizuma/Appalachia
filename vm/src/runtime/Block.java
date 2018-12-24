@@ -22,9 +22,9 @@ public class Block {
     }
 
     public void declareVariable(String name, Value variable) {
-        if (this.table.containsKey(name)) {
-            throw new RuntimeException("variable "+name+" is already declared in this scope");
-        }
+//        if (this.table.containsKey(name)) {
+//            throw new RuntimeException("variable "+name+" is already declared in this scope");
+//        }
         this.table.put(name, variable);
     }
 
