@@ -1,9 +1,6 @@
 package runtime;
 
-import runtime.builtin.BuiltIn;
-import runtime.builtin.Equals;
-import runtime.builtin.NotEquals;
-import runtime.builtin.Print;
+import runtime.builtin.*;
 import runtime.builtin.math.*;
 
 import java.lang.reflect.Constructor;
@@ -11,6 +8,7 @@ import java.util.Optional;
 
 public class RootBlock extends Block {
     private static final Class<?>[] builtIns = {
+            Assert.class,
             Print.class,
             Equals.class,
             NotEquals.class,

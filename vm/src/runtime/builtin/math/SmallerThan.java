@@ -11,6 +11,6 @@ public class SmallerThan extends BinaryOperation {
 
     @Override
     Value performBinaryOperator(Double _0, Double _1) {
-        return new Value(Value.Kind.NUMBER, _0 <_1 ? 1 : 0);
+        return new Value(Value.Kind.NUMBER, _0 <_1 ? 1.0 : 0.0);
     }
 }

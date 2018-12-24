@@ -2,7 +2,7 @@
 #include "defs.h"
 #define YYSTYPE Cell *
 %}
-%token	ID CALL RETURN IF ELSE NUMBER STRING EQUAL LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT
+%token	ID CALL IF ELSE NUMBER STRING EQUAL LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT
 %%
 
 Program
@@ -12,11 +12,8 @@ Statements
 	| Statements Statement 	{ $$ = $2; tree($$); }
 Statement
 	: Assign
-	| Return
 	| Expression
 
-Return
-    : RETURN Expression                  { $$ = node("return", $2); }
 If
     : IF Expression Block ELSE Block     { $$ = node("if", cons($2, cons($3, $5))); }
     | IF Expression Block     { $$ = node("if", cons($2, cons($3, nop()))); }
@@ -42,10 +39,7 @@ Expressions
 Call
 	: Variable LPAR Expressions RPAR { $$ = node("call", cons($1, $3)); }
 	| Variable LPAR RPAR { $$ = node("call", cons($1, nop())); }
-	/*
-	| Expression DOT Variable LPAR Expressions RPAR { $$ = node("call", cons($3, node(",", cons($1, $5)))); }
-	| Expression DOT Variable LPAR  RPAR { $$ = node("call", cons($3, $1)); }
-	*/
+
 Lambda
     : LPAR Expressions RPAR RALLOW Block    { $$ = node("lambda", cons($2, $5)); }
     | LPAR RPAR RALLOW Block    { $$ = node("lambda", cons(nop(), $4)); }
