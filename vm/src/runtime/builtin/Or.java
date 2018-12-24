@@ -3,6 +3,7 @@ package runtime.builtin;
 
 import runtime.Block;
 import runtime.Value;
+import runtime.Runtime;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Or extends BuiltIn {
     }
 
     @Override
-    public Value performBuildIn(List<Value> args) {
+    public Value performBuildIn(Runtime runtime, List<Value> args) {
         var result = false;
         for(Value value: args) {
             result = value.isTrue();

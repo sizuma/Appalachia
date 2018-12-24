@@ -5,7 +5,6 @@ int linecounter = 1;
 %%
 
 "call"                          { return(CALL); }
-"if"                            { return(IF); }
 "else"                          { return(ELSE); }
 [a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
 "-"*[0-9]+							{ return(NUMBER); }

@@ -3,6 +3,7 @@ package runtime.builtin;
 import runtime.Block;
 import runtime.LambdaBody;
 import runtime.Value;
+import runtime.Runtime;
 
 import java.util.List;
 
@@ -18,5 +19,5 @@ public abstract class BuiltIn extends LambdaBody {
     }
 
     @Override
-    abstract public Value performBuildIn(List<Value> args);
+    abstract public Value performBuildIn(Runtime runtime, List<Value> args);
 }

@@ -68,18 +68,15 @@ public class Node {
 
     static Value call(Runtime runtime, Block block, Cell cons) {
         var car = cons.getCarCell();
-        var name = car.getCdrString();
         var cdr = cons.getCdrCell();
-        var mayLambda = block.getVariable(name);
-        if (mayLambda.isEmpty()) throw new RuntimeException(name + " is not declared");
-        var lambda = mayLambda.get();
-        if (lambda.getKind() != Value.Kind.LAMBDA) throw new RuntimeException(name + " is not lambda");
+        var lambda = runtime.evaluate(block, car);
+        if (lambda.getKind() != Value.Kind.LAMBDA) throw new RuntimeException(lambda + " is not lambda");
         var body = (LambdaBody) lambda.getObject();
         var inLambdaBlock = body.getBlock().newChildBlock();
 
         var actualArgs = Node.evaluateArgs(runtime, block, cdr);
         if (body.getBuiltIn()) {
-            return body.performBuildIn(actualArgs);
+            return body.performBuildIn(runtime, actualArgs);
         }
         var parameters = Node.listLeave(body.getLambda().getCarCell())
                 .stream()

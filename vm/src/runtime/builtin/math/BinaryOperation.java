@@ -3,6 +3,7 @@ package runtime.builtin.math;
 import runtime.Block;
 import runtime.Value;
 import runtime.builtin.BuiltIn;
+import runtime.Runtime;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public abstract class BinaryOperation extends BuiltIn {
     }
 
     @Override
-    public Value performBuildIn(List<Value> args) {
+    public Value performBuildIn(Runtime runtime, List<Value> args) {
         if (args.size() != 2) {
             throw new RuntimeException("invalid lambda arguments");
         }

@@ -2,6 +2,7 @@ package runtime.builtin;
 
 import runtime.Block;
 import runtime.Value;
+import runtime.Runtime;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Print extends BuiltIn {
     }
 
     @Override
-    public Value performBuildIn(List<Value> args) {
+    public Value performBuildIn(Runtime runtime, List<Value> args) {
         for(int index=0; index<args.size(); index++) {
             var arg = args.get(index);
             System.out.print(arg.getObject());
