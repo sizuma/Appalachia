@@ -11,6 +11,7 @@ public class Assert extends BinaryOperation {
 
     @Override
     Value performBinaryOperator(Object _0, Object _1) {
+        if (_0 == _1) return Value.True;
         var isEqual = _0.equals(_1);
         if (!isEqual) throw new RuntimeException("assertion error: "+_0 + " != " + _1);
         return Value.True;

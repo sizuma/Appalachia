@@ -115,7 +115,7 @@ public class Node {
         switch (cell.getKind()) {
             case LEAF:
                 var leafValue = Leaf.evaluateLeaf(runtime, block, cell);
-                return leafValue.equals(Value.nop) ? List.of() : List.of(leafValue);
+                return List.of(leafValue);
             case NODE:
                 var nodeOperator = (String)cell.getCar();
                 nodeOperator = nodeOperator.strip();
