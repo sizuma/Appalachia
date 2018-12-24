@@ -82,12 +82,12 @@ public class Node {
                 .stream()
                 .filter(leaf -> !leaf.getCar().equals("NOP"))
                 .collect(Collectors.toList());
-        if (actualArgs.size() != parameters.size()) {
-            throw new RuntimeException("invalid lambda arguments");
-        }
 
-        for(int index=0; index<actualArgs.size(); index++) {
-            var arg = actualArgs.get(index);
+        for(int index=0; index<parameters.size(); index++) {
+            Value arg = Value.nop;
+            if (index<actualArgs.size()) {
+                arg = actualArgs.get(index);
+            }
             var param = parameters.get(index);
             var paramName = param.getCdrString();
             inLambdaBlock.declareVariable(paramName.strip(), arg);

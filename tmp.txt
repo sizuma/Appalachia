@@ -1,5 +1,39 @@
 
     node(= 
         cons(
-            leaf(ID a)
-            leaf(NUMBER 1)))
+            leaf(ID f)
+            node(lambda 
+                cons(
+                    node(, 
+                        cons(
+                            leaf(ID a)
+                            leaf(ID b)))
+                    node(block 
+                        leaf(ID b))))))
+
+    node(call 
+        cons(
+            leaf(ID print)
+            node(call 
+                cons(
+                    leaf(ID f)
+                    node(, 
+                        cons(
+                            leaf(NUMBER 1)
+                            leaf(NUMBER 2)))))))
+
+    node(call 
+        cons(
+            leaf(ID print)
+            node(call 
+                cons(
+                    leaf(ID f)
+                    leaf(NUMBER 1)))))
+
+    node(call 
+        cons(
+            leaf(ID print)
+            node(call 
+                cons(
+                    leaf(ID f)
+                    leaf(NOP )))))

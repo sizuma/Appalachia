@@ -1,1 +1,7 @@
-a = 1
+f = (a, b) -> {
+    b
+}
+
+print(f(1, 2))
+print(f(1))
+print(f())
