@@ -1,5 +1,7 @@
 *.iml
-.idea/
+.idea/*
+vm/.idea/*
 tree
 *.c
 *.o
+out/
