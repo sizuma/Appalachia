@@ -14,7 +14,7 @@ public abstract class BinaryOperation extends BuiltIn {
     @Override
     public Value performBuildIn(Runtime runtime, List<Value> args) {
         if (args.size() != 2) {
-            throw new RuntimeException("invalid lambda arguments");
+            throw new RuntimeException("invalid lambda arguments "+args);
         }
 
         var _0 = args.get(0);

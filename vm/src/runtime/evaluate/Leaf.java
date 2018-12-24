@@ -21,6 +21,8 @@ public class Leaf {
                 var mayVariable = block.getVariable(cdr);
                 if (mayVariable.isPresent()) return mayVariable.get();
                 else throw new RuntimeException("variable "+cdr+" is not declared");
+            case "BLOCK":
+                return new Value(Value.Kind.BLOCK, block);
         }
         return Value.nop;
     }

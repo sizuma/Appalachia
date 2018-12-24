@@ -5,6 +5,7 @@ public class Value {
         NUMBER,
         STRING,
         LAMBDA,
+        BLOCK,
         NOP,
     }
 
@@ -40,7 +41,9 @@ public class Value {
 
     @Override
     public String toString() {
-        return kind+"{" + object +"}";
+        if (this.getKind() != Kind.BLOCK) {
+            return kind+"{" + object +"}";
+        } else return "Block{-}";
     }
 
     public boolean isTrue() {

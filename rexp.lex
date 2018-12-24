@@ -3,7 +3,7 @@ int linecounter = 1;
 %}
 %option nounput
 %%
-
+"this"                          { return(THIS); }
 [a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
 "-"*[0-9]+							{ return(NUMBER); }
 "-"*[0-9]+"."[0-9]+					{ return(NUMBER); }

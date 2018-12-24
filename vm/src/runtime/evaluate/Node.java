@@ -24,6 +24,8 @@ public class Node {
                 return Node.call(runtime, block, cdr);
             case "if":
                 return Node.ifNode(runtime, block, cdr);
+            case "ref":
+                return Node.ref(runtime, block, cdr);
         }
 
         return Value.nop;
@@ -33,14 +35,24 @@ public class Node {
         assert cons.getKind() == Cell.Kind.CONS;
         var car = cons.getCarCell();
         var cdr = cons.getCdrCell();
-
-        assert car.getKind() == Cell.Kind.LEAF;
-        assert car.getCar().equals("ID");
-        var variableName = car.getCdrString();
         var variableValue = runtime.evaluate(block, cdr);
-        block.declareVariable(variableName, variableValue);
-        runtime.log("declare variable " + variableName + ":" + variableValue + " in " + block);
-        return Value.nop;
+        if (car.getKind() == Cell.Kind.LEAF) {
+            var variableName = car.getCdrString();
+            block.declareVariable(variableName, variableValue);
+            runtime.log("declare variable " + variableName + ":" + variableValue + " in " + block);
+            return Value.nop;
+        } else {
+            var ref = car.getCdrCell();
+            var refBlockExpression = ref.getCarCell();
+            var refID = ref.getCdrCell().getCdrString();
+            var refBlockValue = runtime.evaluate(block, refBlockExpression);
+            if (refBlockValue.getKind() != Value.Kind.BLOCK) {
+                throw new RuntimeException(refBlockValue+" is not block");
+            }
+            var refBlock = (Block) refBlockValue.getObject();
+            refBlock.declareVariable(refID, variableValue);
+            return Value.nop;
+        }
     }
 
     static Value block(Runtime runtime, Block block, Cell cons) {
@@ -143,5 +155,17 @@ public class Node {
         } else {
             return runtime.evaluate(block, cdr.getCdrCell());
         }
+    }
+
+    static Value ref(Runtime runtime, Block block, Cell cell) {
+        var car = cell.getCarCell();
+        var cdr = cell.getCdrCell();
+
+        var carValue = runtime.evaluate(block, car);
+        if (carValue.getKind() != Value.Kind.BLOCK) {
+            throw new RuntimeException(carValue + "is not block");
+        }
+        var carBlock = (Block) carValue.getObject();
+        return runtime.evaluate(carBlock, cdr);
     }
 }

@@ -5,7 +5,7 @@ import java.io.*;
 public class Test {
     private static final String srcDirectory = "./test";
 
-    public static void main(String...args) throws IOException {
+    public static void main(String...args) throws Exception {
         var testDirectory = new File(Test.srcDirectory);
 
         for(String testFile:testDirectory.list()) {
@@ -14,16 +14,11 @@ public class Test {
         }
     }
 
-    public static void doTest(String srcPath) {
-        try {
-            System.out.println("test: "+srcPath);
-            var reader = new BufferedReader(new InputStreamReader(new FileInputStream(srcPath)));
-            var vm = new VM(true);
-            vm.interpret(reader);
-            System.out.println("success");
-        } catch (Exception e) {
-            System.err.println("fail test: "+srcPath);
-            e.printStackTrace();
-        }
+    public static void doTest(String srcPath) throws Exception {
+        System.out.println("test: "+srcPath);
+        var reader = new BufferedReader(new InputStreamReader(new FileInputStream(srcPath)));
+        var vm = new VM(true);
+        vm.interpret(reader);
+        System.out.println("success");
     }
 }
