@@ -12,6 +12,8 @@ public class RootBlock extends Block {
             Print.class,
             Equals.class,
             NotEquals.class,
+            Or.class,
+            And.class,
 
             Plus.class,
             Minus.class,
