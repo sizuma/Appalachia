@@ -36,4 +36,9 @@ public class RootBlock extends Block {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "RootBlock{}";
+    }
 }
