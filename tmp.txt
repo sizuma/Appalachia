@@ -1,29 +1,73 @@
 
     node(= 
         cons(
-            leaf(ID f)
-            node(lambda 
-                cons(
-                    leaf(NOP )
-                    node(block 
-                        node(lambda 
-                            cons(
-                                leaf(NOP )
-                                node(block 
-                                    leaf(NUMBER 1)))))))))
-
-    node(= 
-        cons(
-            leaf(ID one)
+            leaf(ID list)
             node(call 
                 cons(
-                    node(call 
+                    node(ref 
                         cons(
-                            leaf(ID f)
-                            leaf(NOP )))
+                            leaf(ID List)
+                            leaf(ID empty)))
                     leaf(NOP )))))
 
     node(call 
         cons(
-            leaf(ID print)
-            leaf(ID one)))
+            node(ref 
+                cons(
+                    leaf(ID List)
+                    leaf(ID append)))
+            node(, 
+                cons(
+                    leaf(ID list)
+                    leaf(NUMBER 1)))))
+
+    node(call 
+        cons(
+            node(ref 
+                cons(
+                    leaf(ID List)
+                    leaf(ID append)))
+            node(, 
+                cons(
+                    leaf(ID list)
+                    leaf(NUMBER 2)))))
+
+    node(call 
+        cons(
+            node(ref 
+                cons(
+                    leaf(ID List)
+                    leaf(ID append)))
+            node(, 
+                cons(
+                    leaf(ID list)
+                    leaf(NUMBER 3)))))
+
+    node(call 
+        cons(
+            node(ref 
+                cons(
+                    leaf(ID List)
+                    leaf(ID append)))
+            node(, 
+                cons(
+                    leaf(ID list)
+                    leaf(NUMBER 4)))))
+
+    node(call 
+        cons(
+            node(ref 
+                cons(
+                    leaf(ID List)
+                    leaf(ID foreach)))
+            node(, 
+                cons(
+                    leaf(ID list)
+                    node(lambda 
+                        cons(
+                            leaf(ID each)
+                            node(block 
+                                node(call 
+                                    cons(
+                                        leaf(ID print)
+                                        leaf(ID each))))))))))

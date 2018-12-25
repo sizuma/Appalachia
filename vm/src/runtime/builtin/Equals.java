@@ -11,6 +11,8 @@ public class Equals extends BinaryOperation {
 
     @Override
     Value performBinaryOperator(Object _0, Object _1) {
+        if (_0 == null && _1 == null) return Value.True;
+
         return  _0.equals(_1) ? Value.True : Value.False;
     }
 }

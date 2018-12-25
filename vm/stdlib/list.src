@@ -1,0 +1,52 @@
+List = {
+
+    empty = () -> {
+        Cons(null, null)
+    }
+
+    isFirstCons = (cons) -> {
+        and(==(cons.car, null), ==(cons.cdr, null))
+    }
+
+    lastCons = (list, target) -> {
+        target = if (==(target, null), () -> {
+            list
+        }, () -> {
+            target
+        })
+        if (==(target.cdr, null), () -> {
+            target
+        }, () -> {
+            lastCons(list, target.cdr)
+        })
+
+    }
+
+    append = (list, e) -> {
+        if (List.isFirstCons(list), () -> {
+            list.car = e
+        }, () -> {
+            last = lastCons(list, null)
+            cons = Cons(e, null)
+            last.cdr = cons
+        })
+        list
+    }
+
+    get = (list, index) -> {
+        if (==(index, 0), () -> {
+            list.car
+        }, () -> {
+            get(list.cdr, -(index, 1))
+        })
+    }
+
+    foreach = (list, f) -> {
+        f(list.car)
+        if (!=(list.cdr, null), () -> {
+            foreach(list.cdr, f)
+        })
+    }
+
+    this
+}

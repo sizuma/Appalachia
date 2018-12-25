@@ -1,0 +1,3 @@
+Cons = (car, cdr) -> {
+    this
+}
