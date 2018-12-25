@@ -32,9 +32,7 @@ constructor = (initialA) -> {
 
 object = constructor(1)
 
-setA = object.setA
-
-setA(2)
+object.setA(2)
 
 assert(object.a, 2)
 

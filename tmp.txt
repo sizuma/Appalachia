@@ -1,188 +1,29 @@
 
     node(= 
         cons(
-            leaf(ID a)
-            node(block 
-                cons(
-                    node(= 
-                        cons(
-                            leaf(ID a)
-                            leaf(NUMBER 1)))
-                    leaf(BLOCK )))))
-
-    node(= 
-        cons(
             leaf(ID f)
             node(lambda 
                 cons(
                     leaf(NOP )
                     node(block 
-                        cons(
-                            node(= 
-                                cons(
-                                    leaf(ID b)
-                                    leaf(ID a)))
-                            leaf(BLOCK )))))))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            leaf(ID a)
-                            leaf(ID a)))
-                    leaf(NUMBER 1)))))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            node(ref 
-                                cons(
-                                    node(call 
-                                        cons(
-                                            leaf(ID f)
-                                            leaf(NOP )))
-                                    leaf(ID b)))
-                            leaf(ID a)))
-                    leaf(NUMBER 1)))))
-
-    node(= 
-        cons(
-            leaf(ID constructor)
-            node(lambda 
-                cons(
-                    leaf(ID initialA)
-                    node(block 
-                        cons(
+                        node(lambda 
                             cons(
-                                cons(
-                                    cons(
-                                        node(= 
-                                            cons(
-                                                leaf(ID a)
-                                                leaf(ID initialA)))
-                                        node(= 
-                                            cons(
-                                                leaf(ID self)
-                                                leaf(BLOCK ))))
-                                    node(= 
-                                        cons(
-                                            leaf(ID setA)
-                                            node(lambda 
-                                                cons(
-                                                    leaf(ID value)
-                                                    node(block 
-                                                        node(= 
-                                                            cons(
-                                                                node(ref 
-                                                                    cons(
-                                                                        leaf(ID self)
-                                                                        leaf(ID a)))
-                                                                leaf(ID value)))))))))
-                                node(= 
-                                    cons(
-                                        leaf(ID b)
-                                        node(block 
-                                            cons(
-                                                node(= 
-                                                    cons(
-                                                        leaf(ID c)
-                                                        leaf(NUMBER 1)))
-                                                leaf(BLOCK ))))))
-                            leaf(BLOCK )))))))
+                                leaf(NOP )
+                                node(block 
+                                    leaf(NUMBER 1)))))))))
 
     node(= 
         cons(
-            leaf(ID object)
+            leaf(ID one)
             node(call 
                 cons(
-                    leaf(ID constructor)
-                    leaf(NUMBER 1)))))
-
-    node(= 
-        cons(
-            leaf(ID setA)
-            node(ref 
-                cons(
-                    leaf(ID object)
-                    leaf(ID setA)))))
+                    node(call 
+                        cons(
+                            leaf(ID f)
+                            leaf(NOP )))
+                    leaf(NOP )))))
 
     node(call 
         cons(
-            leaf(ID setA)
-            leaf(NUMBER 2)))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            leaf(ID object)
-                            leaf(ID a)))
-                    leaf(NUMBER 2)))))
-
-    node(= 
-        cons(
-            node(ref 
-                cons(
-                    leaf(ID object)
-                    leaf(ID a)))
-            leaf(NUMBER 3)))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            leaf(ID object)
-                            leaf(ID a)))
-                    leaf(NUMBER 3)))))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            node(ref 
-                                cons(
-                                    leaf(ID object)
-                                    leaf(ID b)))
-                            leaf(ID c)))
-                    leaf(NUMBER 1)))))
-
-    node(= 
-        cons(
-            node(ref 
-                cons(
-                    node(ref 
-                        cons(
-                            leaf(ID object)
-                            leaf(ID b)))
-                    leaf(ID c)))
-            leaf(NUMBER 4)))
-
-    node(call 
-        cons(
-            leaf(ID assert)
-            node(, 
-                cons(
-                    node(ref 
-                        cons(
-                            node(ref 
-                                cons(
-                                    leaf(ID object)
-                                    leaf(ID b)))
-                            leaf(ID c)))
-                    leaf(NUMBER 4)))))
+            leaf(ID print)
+            leaf(ID one)))
