@@ -27,7 +27,7 @@ Expression
 	| Ref
 Expressions
 	: Expression
-	| Expressions COMMA Expression	{ $$ = node(",", cons($1, $3)); }
+	| Expressions COMMA Expression	{ $$ = cons($1, $3); }
 
 Call
 	: Expression LPAR Expressions RPAR { $$ = node("call", cons($1, $3)); }
