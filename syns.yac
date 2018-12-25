@@ -14,13 +14,13 @@ Statement
 	: Expression
 
 Block
-    : LBRA BlockBody RBRA { $$ = node("block", $2); }
+    : LBRA RBRA { $$ = node("block", nop()); }
+    | LBRA BlockBody RBRA { $$ = node("block", $2); }
 BlockBody
     : Statement
     | BlockBody Statement   { $$ = cons($1, $2); }
 Expression
 	: Call
-	| Variable
 	| Constant
 	| Lambda
 	| Block
@@ -36,10 +36,10 @@ Call
 Lambda
     : LPAR Expressions RPAR RALLOW Block    { $$ = node("lambda", cons($2, $5)); }
     | LPAR RPAR RALLOW Block    { $$ = node("lambda", cons(nop(), $4)); }
-Variable
-	: ID				{ $$ = leaf("ID", yytext); }
+
 Ref
-    : Expression DOT Variable { $$ = node("ref", cons($1, $3)); }
+    : ID    { $$ = leaf("ID", yytext); }
+    | Expression DOT Ref { $$ = node("ref", cons($1, $3)); }
 Constant
 	: NUMBER			{ $$ = leaf("NUMBER", yytext); }
 	| STRING			{ $$ = leaf("STRING", yytext); }
