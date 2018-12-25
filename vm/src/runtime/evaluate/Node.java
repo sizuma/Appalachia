@@ -22,8 +22,6 @@ public class Node {
                 return Node.lambda(runtime, block, cdr);
             case "call":
                 return Node.call(runtime, block, cdr);
-            case "if":
-                return Node.ifNode(runtime, block, cdr);
             case "ref":
                 return Node.ref(runtime, block, cdr);
         }
@@ -142,19 +140,6 @@ public class Node {
                 return list;
         }
         return List.of();
-    }
-
-    static Value ifNode(Runtime runtime, Block block, Cell cell) {
-        var car = cell.getCarCell();
-        var cdr = cell.getCdrCell();
-
-        var condition = runtime.evaluate(block, car);
-
-        if (condition.isTrue()) {
-            return runtime.evaluate(block, cdr.getCarCell());
-        } else {
-            return runtime.evaluate(block, cdr.getCdrCell());
-        }
     }
 
     static Value ref(Runtime runtime, Block block, Cell cell) {
