@@ -2,7 +2,7 @@
 #include "defs.h"
 #define YYSTYPE Cell *
 %}
-%token	ID NUMBER STRING LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS
+%token	ID NUMBER STRING LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS EQUAL
 %%
 
 Program
@@ -11,7 +11,8 @@ Statements
 	: Statement		{ $$ = $1;  tree($$); }
 	| Statements Statement 	{ $$ = $2; tree($$); }
 Statement
-	: Expression
+    : Assign
+	| Expression
 
 Block
     : LBRA RBRA { $$ = node("block", nop()); }
@@ -32,6 +33,25 @@ Expressions
 Call
 	: Expression LPAR Expressions RPAR { $$ = node("call", cons($1, $3)); }
 	| Expression LPAR RPAR { $$ = node("call", cons($1, nop())); }
+
+Assign
+    : Ref EQUAL Expression {
+        char* name = shortenRef($1);
+        $$ = node(
+            "call",
+            cons(
+                leaf("ID", "assign"),
+                cons(
+                    cons(
+                        $1,
+                        leaf("STRING", name)
+                    ),
+                    $3
+                )
+            )
+        );
+
+    }
 
 Lambda
     : LPAR Expressions RPAR RALLOW Block    { $$ = node("lambda", cons($2, $5)); }

@@ -9,6 +9,7 @@ int linecounter = 1;
 "-"*[0-9]+"."[0-9]+					{ return(NUMBER); }
 \"[^\"]*\" 						{ return(STRING); }
 "=="                { return(ID); }
+"="                { return(EQUAL); }
 "!="                { return(ID); }
 "("					{ return(LPAR); }
 ")"					{ return(RPAR); }

@@ -42,6 +42,43 @@ Cell* nop() {
     return leaf("NOP", "");
 }
 
+/*
+    代入文のシンタックスシュガー用
+    block.a.b のような参照を代入のために block.aとb に分割する
+*/
+char* shortenRef(Cell *cell) {
+    if (cell->kind == LEAF) {
+        char* result = (char*) malloc(sizeof(char)*100);
+        strcat(result, "\"");
+        strcat(result, (char*) cell->tail);
+        strcat(result, "\"");
+
+        cell->kind = LEAF;
+        cell->head = "BLOCK";
+        cell->tail = "";
+
+        return result;
+    }
+    Cell* current = cell;
+    Cell* lastRefCell;
+    while(current->kind != LEAF) {
+        if(current->kind == NODE && strcmp((char*)current->head, "ref") == 0) {
+            lastRefCell = current;
+            current = current->tail->tail;
+        }
+    }
+    Cell* lastRefTail = lastRefCell->tail->head;
+    char* result = (char*) malloc(sizeof(char)*100);
+    strcat(result, "\"");
+    strcat(result, (char*)lastRefCell->tail->tail->tail);
+    strcat(result, "\"");
+    lastRefCell->kind = lastRefTail->kind;
+    lastRefCell->head = lastRefTail->head;
+    lastRefCell->tail = lastRefTail->tail;
+
+    return result;
+}
+
 void tree(Cell *pointer) {
 	visit(pointer, 1);
 	printf("\n");

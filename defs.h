@@ -25,6 +25,9 @@ Cell *cons(Cell *, Cell *);
 Cell *node(char *, Cell *);
 Cell *leaf(char *, char *);
 Cell *nop();
+
+char *shortenRef(Cell *);
+
 void tree(Cell *);
 void visit(Cell *, int);
 
