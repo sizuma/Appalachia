@@ -2,7 +2,7 @@
 #include "defs.h"
 #define YYSTYPE Cell *
 %}
-%token	ID NUMBER STRING EQUAL LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS
+%token	ID NUMBER STRING LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS
 %%
 
 Program
@@ -11,12 +11,7 @@ Statements
 	: Statement		{ $$ = $1;  tree($$); }
 	| Statements Statement 	{ $$ = $2; tree($$); }
 Statement
-	: Assign
-	| Expression
-
-Assign
-	: Variable EQUAL Expression { $$ = node("=", cons($1, $3)); }
-	| Ref EQUAL Expression { $$ = node("=", cons($1, $3)); }
+	: Expression
 
 Block
     : LBRA BlockBody RBRA { $$ = node("block", $2); }

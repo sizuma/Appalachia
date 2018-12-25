@@ -14,8 +14,6 @@ public class Node {
         var action = cell.getCarString();
         var cdr = cell.getCdrCell();
         switch (action) {
-            case "=":
-                return Node.assign(runtime, block, cdr);
             case "block":
                 return Node.block(runtime, block, cdr);
             case "lambda":
@@ -27,30 +25,6 @@ public class Node {
         }
 
         return Value.nop;
-    }
-
-    static Value assign(Runtime runtime, Block block, Cell cons) {
-        assert cons.getKind() == Cell.Kind.CONS;
-        var car = cons.getCarCell();
-        var cdr = cons.getCdrCell();
-        var variableValue = runtime.evaluate(block, cdr);
-        if (car.getKind() == Cell.Kind.LEAF) {
-            var variableName = car.getCdrString();
-            block.declareVariable(variableName, variableValue);
-            runtime.log("declare variable " + variableName + ":" + variableValue + " in " + block);
-            return Value.nop;
-        } else {
-            var ref = car.getCdrCell();
-            var refBlockExpression = ref.getCarCell();
-            var refID = ref.getCdrCell().getCdrString();
-            var refBlockValue = runtime.evaluate(block, refBlockExpression);
-            if (refBlockValue.getKind() != Value.Kind.BLOCK) {
-                throw new RuntimeException(refBlockValue+" is not block");
-            }
-            var refBlock = (Block) refBlockValue.getObject();
-            refBlock.declareVariable(refID, variableValue);
-            return Value.nop;
-        }
     }
 
     static Value block(Runtime runtime, Block block, Cell cons) {

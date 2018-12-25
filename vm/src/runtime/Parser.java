@@ -29,8 +29,9 @@ public class Parser {
             return Optional.ofNullable(this.parseNode(line, reader));
         } else if (line.startsWith("leaf")) {
             return Optional.ofNullable(this.parseLeaf(line));
+        } else {
+            throw new RuntimeException("unknown cons "+line);
         }
-        return Optional.empty();
     }
 
     Cell parseCons(BufferedReader reader) throws IOException {

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public class RootBlock extends Block {
     private static final Class<?>[] builtIns = {
+            Assign.class,
             Assert.class,
             Print.class,
             Equals.class,

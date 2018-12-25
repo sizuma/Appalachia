@@ -10,7 +10,6 @@ int linecounter = 1;
 \"[^\"]*\" 						{ return(STRING); }
 "=="                { return(ID); }
 "!="                { return(ID); }
-"="					{ return(EQUAL); }
 "("					{ return(LPAR); }
 ")"					{ return(RPAR); }
 "{"					{ return(LBRA); }

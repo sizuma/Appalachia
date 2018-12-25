@@ -1,21 +1,22 @@
-f1 = () -> {
+assign(this, "f1", () -> {
     1
-}
+})
 
-f2 = (a) -> {
+assign(this, "f2", (a) -> {
     a
-}
+})
 
-f3 = (a, b) -> {
-    () -> {
-        b
-    }
-}
+assign(this, "f3", (a, b) -> {
+   () -> {
+       b
+   }
+})
+
 
 assert(f1(), 1)
 
 assert(f2(2), 2)
 
-f4 = f3(3, 4)
+assign(this, "f4", f3(3, 4))
 
 assert(f4(), 4)

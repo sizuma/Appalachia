@@ -1,10 +1,1 @@
-list = List.empty()
-
-List.append(list, 1)
-List.append(list, 2)
-List.append(list, 3)
-List.append(list, 4)
-
-List.foreach(list, (each) -> {
-    print(each)
-})
+1

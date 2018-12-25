@@ -1,5 +1,5 @@
-a = 2
+assign(this, "a", 2)
 
-b = a
+assign(this, "b", a)
 
 assert(a, b)

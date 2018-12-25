@@ -1,6 +1,6 @@
-f = (a, b) -> {
-    b
-}
+assign(this, "f", (a, b) -> {
+  b
+})
 
 assert(f(1, 2), 2)
 assert(f(1), null)
