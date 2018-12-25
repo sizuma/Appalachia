@@ -54,8 +54,8 @@ char* shortenRef(Cell *cell) {
         strcat(result, "\"");
 
         cell->kind = LEAF;
-        cell->head = "BLOCK";
-        cell->tail = "";
+        cell->head = (Cell *)"BLOCK";
+        cell->tail = (Cell *)"";
 
         return result;
     }
