@@ -5,3 +5,4 @@ tree
 *.c
 *.o
 out/
+.DS_Store
