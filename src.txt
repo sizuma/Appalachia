@@ -1,21 +1,19 @@
-a = 1
-
-b = {
-    c = 2
-
-    f = () -> {
-        d = 3
-        this
-    }
-    this
+for = (execLambda, conditionLambda) -> {
+    if(conditionLambda(), () -> {
+        execLambda()
+        for(execLambda, conditionLambda)
+    })
 }
 
-b.e = 4
-
-assert(a, 1)
-
-assert(b.c, 2)
-
-assert(b.f(b.c).d, 3)
-
-assert(b.e, 4)
+{
+    index = 0
+    self = this
+    until = () -> {
+        <(index, 10)
+    }
+    each = () -> {
+        print(index)
+        self.index = +(index, 1)
+    }
+    for(each,until)
+}

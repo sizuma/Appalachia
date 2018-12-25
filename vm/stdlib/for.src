@@ -1,0 +1,6 @@
+for = (execLambda, conditionLambda) -> {
+    if(conditionLambda(), () -> {
+        execLambda()
+        for(execLambda, conditionLambda)
+    })
+}

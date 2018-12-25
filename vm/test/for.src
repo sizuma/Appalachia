@@ -1,0 +1,15 @@
+index = 0
+self = this
+sum = 0
+until = () -> {
+    <(index, 10)
+}
+each = () -> {
+    print(index)
+    self.sum = +(self.sum, index)
+    self.index = +(index, 1)
+}
+for(each,until)
+
+assert(index, 10)
+assert(sum, 45)
