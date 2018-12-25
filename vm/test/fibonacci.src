@@ -7,4 +7,6 @@ fibonacci = (n) -> {
     })
 }
 
-print(fibonacci(10))
+assert(fibonacci(10), 55)
+
+assert(fibonacci(10), math.fibonacci(10))
