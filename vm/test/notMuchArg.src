@@ -1,4 +1,4 @@
-assign(this, "f", (a, b) -> {
+f = \a,b -> {
   b
 })
 

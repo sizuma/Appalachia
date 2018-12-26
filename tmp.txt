@@ -4,21 +4,59 @@
             leaf(ID assign)
             cons(
                 cons(
-                    node(call 
+                    leaf(BLOCK )
+                    leaf(STRING "Cons"))
+                node(lambda 
+                    cons(
                         cons(
-                            node(ref 
+                            leaf(ID car)
+                            leaf(ID cdr))
+                        node(block 
+                            cons(
                                 cons(
-                                    leaf(ID a)
-                                    leaf(ID f)))
-                            node(ref 
-                                cons(
-                                    leaf(ID a)
-                                    leaf(ID b)))))
-                    leaf(STRING "c"))
+                                    node(call 
+                                        cons(
+                                            leaf(ID assign)
+                                            cons(
+                                                cons(
+                                                    leaf(BLOCK )
+                                                    leaf(STRING "self"))
+                                                leaf(BLOCK ))))
+                                    node(call 
+                                        cons(
+                                            leaf(ID assign)
+                                            cons(
+                                                cons(
+                                                    leaf(BLOCK )
+                                                    leaf(STRING "left"))
+                                                node(lambda 
+                                                    cons(
+                                                        leaf(NOP )
+                                                        node(block 
+                                                            leaf(ID car))))))))
+                                leaf(ID self))))))))
+
+    node(call 
+        cons(
+            leaf(ID assign)
+            cons(
+                cons(
+                    leaf(BLOCK )
+                    leaf(STRING "cons"))
                 node(call 
                     cons(
-                        node(ref 
-                            cons(
-                                leaf(ID a)
-                                leaf(ID f)))
-                        leaf(NOP ))))))
+                        leaf(ID Cons)
+                        cons(
+                            leaf(NUMBER 1)
+                            leaf(NUMBER 2)))))))
+
+    node(call 
+        cons(
+            leaf(ID print)
+            node(call 
+                cons(
+                    node(ref 
+                        cons(
+                            leaf(ID cons)
+                            leaf(ID left)))
+                    leaf(NOP )))))

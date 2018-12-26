@@ -1,13 +1,13 @@
-assign(this, "a", {
-    assign(this, "a", 1)
+a = {
+    a = 1
     this
-})
+}
 
-assign(this, "f", () -> {
-    assign(this, "b", a)
+f = \ -> {
+    b = a
     this
-})
+}
 
 assert(a.a, 1)
 
-assert(f().b.a, 1) /* 1 */
+assert(f().b.a, 1)

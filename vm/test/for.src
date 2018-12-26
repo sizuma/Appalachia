@@ -1,10 +1,10 @@
 index = 0
 self = this
 sum = 0
-until = () -> {
+until = \ -> {
     <(index, 10)
 }
-each = () -> {
+each = \ -> {
     print(index)
     self.sum = +(self.sum, index)
     self.index = +(index, 1)
