@@ -2,30 +2,27 @@
 #include "defs.h"
 #define YYSTYPE Cell *
 %}
-%token	ID NUMBER STRING LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS EQUAL
+%token	ID NUMBER STRING LPAR RPAR LBRA RBRA LARROW RALLOW COMMA DOT THIS EQUAL LAMBDA
 %%
 
 Program
 	: Statements
+
 Statements
-	: Statement		{ $$ = $1;  tree($$); }
-	| Statements Statement 	{ $$ = $2; tree($$); }
-Statement
-    : Assign
-	| Expression
+	: Expression		{ $$ = $1;  tree($$); }
+	| Statements Expression 	{ $$ = $2; tree($$); }
 
 Block
-    : LBRA RBRA { $$ = node("block", nop()); }
-    | LBRA BlockBody RBRA { $$ = node("block", $2); }
+    : LBRA BlockBody RBRA { $$ = node("block", $2); }
+
 BlockBody
-    : Statement
-    | BlockBody Statement   { $$ = cons($1, $2); }
+    : Expression
+    | BlockBody Expression   { $$ = cons($1, $2); }
+
 Expression
 	: Call
-	| Constant
-	| Lambda
-	| Block
-	| Ref
+	| Value
+
 Expressions
 	: Expression
 	| Expressions COMMA Expression	{ $$ = cons($1, $3); }
@@ -33,6 +30,7 @@ Expressions
 Call
 	: Expression LPAR Expressions RPAR { $$ = node("call", cons($1, $3)); }
 	| Expression LPAR RPAR { $$ = node("call", cons($1, nop())); }
+    | Assign
 
 Assign
     : Ref EQUAL Expression {
@@ -53,13 +51,20 @@ Assign
 
     }
 
+Value
+    : Constant
+    | Lambda
+    | Block
+    | Ref
+
 Lambda
-    : LPAR Expressions RPAR RALLOW Block    { $$ = node("lambda", cons($2, $5)); }
-    | LPAR RPAR RALLOW Block    { $$ = node("lambda", cons(nop(), $4)); }
+    : LAMBDA Expressions RALLOW Block    { $$ = node("lambda", cons($2, $4)); }
+    | LAMBDA RALLOW Block    { $$ = node("lambda", cons(nop(), $3)); }
 
 Ref
     : ID    { $$ = leaf("ID", yytext); }
-    | Expression DOT Ref { $$ = node("ref", cons($1, $3)); }
+    | Expression DOT ID { $$ = node("ref", cons($1, leaf("ID", yytext))); }
+
 Constant
 	: NUMBER			{ $$ = leaf("NUMBER", yytext); }
 	| STRING			{ $$ = leaf("STRING", yytext); }

@@ -1,0 +1,24 @@
+
+    node(call 
+        cons(
+            leaf(ID assign)
+            cons(
+                cons(
+                    node(call 
+                        cons(
+                            node(ref 
+                                cons(
+                                    leaf(ID a)
+                                    leaf(ID f)))
+                            node(ref 
+                                cons(
+                                    leaf(ID a)
+                                    leaf(ID b)))))
+                    leaf(STRING "c"))
+                node(call 
+                    cons(
+                        node(ref 
+                            cons(
+                                leaf(ID a)
+                                leaf(ID f)))
+                        leaf(NOP ))))))
