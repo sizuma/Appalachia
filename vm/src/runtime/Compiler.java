@@ -3,7 +3,7 @@ package runtime;
 import java.io.*;
 
 public class Compiler {
-    private final String compilerPath = "../tree";
+    private final String compilerPath = "./compiler";
 
     public String compile(BufferedReader reader) throws IOException, InterruptedException{
         var builder = new ProcessBuilder("bash", "-c", compilerPath);

@@ -2,7 +2,11 @@
 .idea/*
 vm/.idea/*
 tree
-*.c
+lex.yy.c
+y.tab.c
+compiler/compiler
 *.o
 out/
 .DS_Store
+runtime/*
+*.jar

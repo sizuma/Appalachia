@@ -1,45 +1,33 @@
-TARGET	= tree
 
-# LINK (*.o)
-LD	= cc
-LDFLAGS	= -W
+COMPILER_DIRECTORY = ./compiler
+VM_DIRECTORY = ./vm
 
-# COMPILE (*.c)
-CC	= cc
-CCFLAGS	= -W -O2
+MAKE_COMPILER = (cd $(COMPILER_DIRECTORY); make)
+CLEAN_COMPILER = (cd $(COMPILER_DIRECTORY); make clean)
+MAKE_VM = (cd $(VM_DIRECTORY); make jar)
+CLEAN_VM = (cd $(VM_DIRECTORY); make clean)
 
-# GENERATOR (*.lex and *.yac)
-LEX	= flex
-YAC	= yacc
+OUT = runtime
 
-OBJS	= y.tab.o main.o
-DEFS	= defs.h
-REXP	= rexp.lex
-LEXC	= lex.yy.c
-SYNS	= syns.yac
-YACC	= y.tab.c
-SRC	= src.txt
-TMP	= tmp.txt
+all: out compiler vm
 
-all: $(TARGET)
+out:
+	mkdir $(OUT)
 
-$(TARGET): $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $(OBJS)
+compiler: out
+	$(MAKE_COMPILER)
+	cp $(COMPILER_DIRECTORY)/compiler $(OUT)/
+vm: out
+	$(MAKE_VM)
+	cp $(VM_DIRECTORY)/vm.jar $(OUT)/
+	cp -r $(VM_DIRECTORY)/stdlib $(OUT)/stdlib
+	cp -r $(VM_DIRECTORY)/test $(OUT)/test
 
-$(OBJS): $(DEFS)
+clean-out:
+	rm -rf $(OUT)
+clean-compiler:
+	$(CLEAN_COMPILER)
+clean-vm:
+	$(CLEAN_VM)
 
-$(LEXC): $(REXP) $(DEFS)
-	$(LEX) $(REXP)
-
-$(YACC): $(SYNS) $(LEXC) $(DEFS)
-	$(YAC) $(SYNS)
-
-%.o: %.c
-	$(CC) $(CCFLAGS) -c $< -o $@
-
-clean:
-	-rm -f $(TARGET)* $(OBJS) $(LEXC) $(YACC) $(TMP) *\~
-
-src: all
-	./$(TARGET) < $(SRC) > $(TMP)
-	cat $(TMP)
+clean: clean-out clean-compiler clean-vm
