@@ -1,49 +1,29 @@
-
-FORMATTER_DIRECTORY = ./formatter
-COMPILER_DIRECTORY = ./compiler
-VM_DIRECTORY = ./vm
-
-MAKE_FORMATTER = (cd $(FORMATTER_DIRECTORY); make)
-CLEAN_FORMATTER = (cd $(FORMATTER_DIRECTORY); make clean)
-MAKE_COMPILER = (cd $(COMPILER_DIRECTORY); make)
-CLEAN_COMPILER = (cd $(COMPILER_DIRECTORY); make clean)
-MAKE_VM = (cd $(VM_DIRECTORY); make jar)
-CLEAN_VM = (cd $(VM_DIRECTORY); make clean)
-
-OUT = runtime
-STD_LIB = stdlib
-TEST = test
-
 all: runtime
 
 out:
-	mkdir -p $(OUT)
-	mkdir -p $(OUT)/$(STD_LIB)
-	mkdir -p $(OUT)/$(TEST)
+	mkdir -p runtime
+	mkdir -p runtime/stdlib
+	mkdir -p runtime/test
+	
+vm/vm.jar:
+	(cd ./vm ; make)
 
-formatter: out
-	$(MAKE_FORMATTER)
-	
-compiler: out
-	$(MAKE_COMPILER)
-	
-vm: out
-	$(MAKE_VM)
-	
-runtime: out formatter compiler vm
-	cp -f $(FORMATTER_DIRECTORY)/formatter $(OUT)/
-	cp -f $(COMPILER_DIRECTORY)/compiler $(OUT)/
-	cp -f $(VM_DIRECTORY)/vm.jar $(OUT)/
+native/formatter:
+	(cd native; make formatter)
+native/compiler:
+	(cd native; make compiler)
 
-	cp -rf $(VM_DIRECTORY)/$(STD_LIB)/* $(OUT)/$(STD_LIB)/
-	cp -rf $(VM_DIRECTORY)/$(TEST)/* $(OUT)/$(TEST)/
+runtime: out native/formatter native/compiler vm/vm.jar
+	cp -f native/formatter runtime/
+	cp -f native/compiler runtime/
+	cp -f vm/vm.jar runtime/
+	cp -rf vm/stdlib/* runtime/stdlib
+	cp -rf vm/test/* runtime/test
 clean-out:
-	rm -rf $(OUT)
-clean-formatter:
-	$(CLEAN_FORMATTER)
-clean-compiler:
-	$(CLEAN_COMPILER)
+	rm -rf runtime
+clean-native:
+	(cd native; make clean)
 clean-vm:
-	$(CLEAN_VM)
+	(cd vm; make clean)
 
-clean: clean-out clean-formatter clean-compiler clean-vm 
+clean: clean-out clean-native clean-vm 
