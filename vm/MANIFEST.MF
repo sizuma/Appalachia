@@ -1,1 +1,1 @@
-Main-Class: Example
+Main-Class: cli.CommandLineInterface

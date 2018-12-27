@@ -9,24 +9,34 @@ MAKE_COMPILER = (cd $(COMPILER_DIRECTORY); make)
 CLEAN_COMPILER = (cd $(COMPILER_DIRECTORY); make clean)
 MAKE_VM = (cd $(VM_DIRECTORY); make jar)
 CLEAN_VM = (cd $(VM_DIRECTORY); make clean)
-OUT = runtime
 
-all: out formatter compiler vm
+OUT = runtime
+STD_LIB = stdlib
+TEST = test
+
+all: runtime
 
 out:
 	mkdir -p $(OUT)
+	mkdir -p $(OUT)/$(STD_LIB)
+	mkdir -p $(OUT)/$(TEST)
 
 formatter: out
 	$(MAKE_FORMATTER)
-	cp $(FORMATTER_DIRECTORY)/formatter $(OUT)/
+	
 compiler: out
 	$(MAKE_COMPILER)
-	cp $(COMPILER_DIRECTORY)/compiler $(OUT)/
+	
 vm: out
 	$(MAKE_VM)
-	cp $(VM_DIRECTORY)/vm.jar $(OUT)/
-	cp -r $(VM_DIRECTORY)/stdlib $(OUT)/stdlib/
-	cp -r $(VM_DIRECTORY)/test/ $(OUT)/test/
+	
+runtime: out formatter compiler vm
+	cp -f $(FORMATTER_DIRECTORY)/formatter $(OUT)/
+	cp -f $(COMPILER_DIRECTORY)/compiler $(OUT)/
+	cp -f $(VM_DIRECTORY)/vm.jar $(OUT)/
+
+	cp -rf $(VM_DIRECTORY)/$(STD_LIB)/* $(OUT)/$(STD_LIB)/
+	cp -rf $(VM_DIRECTORY)/$(TEST)/* $(OUT)/$(TEST)/
 clean-out:
 	rm -rf $(OUT)
 clean-formatter:

@@ -1,12 +1,10 @@
 
 JAVAC = javac
 SRC = ./src
-SRC_JAVA = $(SRC)/*.java
+SRC_JAVA = $(SRC)/cli/CommandLineInterface.java
 
 JAVA_OUT = ./out
 JAVAC_FLAGS = -d $(JAVA_OUT) -sourcepath $(SRC)
-
-EXAMPLE = $(JAVA_OUT)/Exmaple.class
 
 JAR = jar
 JAR_FILE = vm.jar

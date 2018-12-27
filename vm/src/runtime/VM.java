@@ -44,7 +44,7 @@ public class VM {
 
     public void interpret(BufferedReader reader, Block block) throws IOException,InterruptedException {
         var compiler = new Compiler();
-        var sTree = compiler.compile(reader);
+        var sTree = compiler.redirection(reader);
         var sTreeStream = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(sTree.getBytes(StandardCharsets.UTF_8))));
         this.execSTree(sTreeStream, block);
     }
