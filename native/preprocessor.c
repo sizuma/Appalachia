@@ -133,12 +133,12 @@ void* assign(void* ref, void* expression) {
 	char* refString = (char*)ref;
 	int index = strlen(refString);
 	char c = refString[index];
-	while(c != '.' && c > 0) {
+	while(c != '.' && index > 0) {
 		index--;
 		c = refString[index];
 	}
 
-	if (c == 0) {
+	if (index == 0) {
 		copy("assign(this, \"");
 		append(refString);
 		append("\", ");

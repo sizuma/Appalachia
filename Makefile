@@ -23,7 +23,7 @@ runtime: out native/formatter native/compiler native/preprocessor vm/vm.jar
 	cp -rf vm/test/* runtime/test
 
 clean-out:
-	rm -rf runtime
+	rm -rf runtime/*
 clean-native:
 	(cd native; make clean)
 clean-vm:

@@ -1,0 +1,41 @@
+List = {
+	Cons = \car, cdr -> {
+		this
+	}
+
+	new = \ headCons -> {
+		self = this
+		append = \ e -> {
+			List.append(self, e)
+		}
+		foreach = \ f -> {
+			List.foreach(self, f)
+		}
+		this
+	}
+
+	append = \ list, e -> {
+		f = \ current, e -> {
+			if(==(current.cdr, null),\ -> {
+				p = Cons(e, null)
+				current.cdr = p
+			}, \ -> {
+				f(current.cdr, e)
+			})
+		}
+		f(list.headCons,e)
+		list
+	}
+
+	foreach = \ list, lambda -> {
+		f = \ current -> {
+			lambda(current.car)
+			cdr = current.cdr
+			if(!=(cdr, null), \ -> {
+				f(cdr)
+			})
+		}
+		f(list.headCons)
+	}
+	this
+}
