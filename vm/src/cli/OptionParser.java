@@ -1,5 +1,6 @@
 package cli;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,10 +11,20 @@ public class OptionParser {
         while (args.size() > 0) {
             var arg = args.get(0).strip();
             args.remove(0);
-            if (arg.equals("--show-log")) option.setShowLog(true);
+            switch (arg) {
+                case "--show-log":
+                    option.setShowLog(true);
+                    break;
+                case "--interpret":
+                    option.setInterpret(true);
+                    break;
+                default:
+                    option.addFile(new File(arg));
+            }
         }
         return option;
     }
+
     public static Options parse(String... args) {
         var list = new ArrayList<String>(args.length);
         Collections.addAll(list, args);

@@ -1,7 +1,7 @@
 package runtime;
 
 public class Compiler extends OtherProcess {
-    public Compiler() {
-        super("./compiler");
+    public Compiler(VM vm) {
+        super(vm, "./compiler");
     }
 }

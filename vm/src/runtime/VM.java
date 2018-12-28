@@ -1,20 +1,28 @@
 package runtime;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class VM {
-    private final String stdlibDir = "./stdlib";
+    private final File jarFile = new File(System.getProperty("java.class.path"));
+    private final File vmDirectory = jarFile.getParentFile();
+    private final File stdlibDir = new File(vmDirectory, "stdlib");
+    private final File tempDir = new File(vmDirectory, ".tmp");
 
     private boolean logging;
+
+    private final Runtime runtime;
     private final RootBlock rootBlock;
+    private final Block stdlibBlock;
     private final Block userBlock;
 
     public VM(boolean logging) throws IOException, InterruptedException {
         this.logging = logging;
+        this.runtime = new Runtime(this.logging);
         this.rootBlock = new RootBlock();
-        this.userBlock = this.rootBlock.newChildBlock();
+        this.stdlibBlock = rootBlock.newChildBlock();
+        this.userBlock = this.stdlibBlock.newChildBlock();
+        this.prepareTempDirectory();
         this.loadStdlib();
     }
 
@@ -22,11 +30,9 @@ public class VM {
         this(false);
     }
 
-    public void execSTree(BufferedReader reader, Block block) throws IOException {
+    public void execTree(File treeFile, Block block) throws IOException {
         var parser = new Parser();
-        List<Cell> statements = parser.parse(reader);
-
-        var runtime = new Runtime(this.logging);
+        List<Cell> statements = parser.parse(treeFile);
         statements.stream().map(Cell::toString).forEach(runtime::log);
 
         statements.forEach(statement -> {
@@ -34,31 +40,50 @@ public class VM {
         });
     }
 
-    public void execSTree(BufferedReader reader) throws IOException {
-        this.execSTree(reader, this.userBlock);
+    public void execTree(File treeFile) throws IOException {
+        this.execTree(treeFile, this.userBlock);
     }
 
-    public void execSTree(File file) throws IOException {
-        this.execSTree(new BufferedReader(new InputStreamReader(new FileInputStream(file))));
+    public File preprocess(File src) throws IOException, InterruptedException {
+        var preprocessor = new Preprocessor(this);
+        var outputFileName = src.getName()+"@"+src.lastModified()+".preprocessed";
+        var output = new File(this.tempDir, outputFileName);
+        preprocessor.redirectToFile(src, output);
+        return output;
     }
 
-    public void interpret(BufferedReader reader, Block block) throws IOException,InterruptedException {
-        var compiler = new Compiler();
-        var sTree = compiler.redirection(reader);
-        var sTreeStream = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(sTree.getBytes(StandardCharsets.UTF_8))));
-        this.execSTree(sTreeStream, block);
+    public File compile(File src) throws IOException, InterruptedException {
+        var compiler = new Compiler(this);
+        var outputFileName = src.getName()+"@"+src.lastModified()+".compiled";
+        var output = new File(this.tempDir, outputFileName);
+        compiler.redirectToFile(src, output);
+        return output;
     }
 
-    public void interpret(BufferedReader reader) throws IOException,InterruptedException {
-        this.interpret(reader, this.userBlock);
+    public void interpret(File srcFile, Block block) throws IOException,InterruptedException {
+        var compiledFile = this.compile(this.preprocess(srcFile));
+        this.execTree(compiledFile, block);
     }
+    public void interpret(File srcFile) throws IOException,InterruptedException {
+        this.interpret(srcFile, this.userBlock);
+    }
+
+    private void prepareTempDirectory() {
+        if(this.tempDir.isDirectory()) return;
+        tempDir.mkdir();
+    }
+
     private void loadStdlib() throws IOException, InterruptedException {
-        var stdlibDirFile = new File(this.stdlibDir);
         var logging = this.logging;
         this.logging = false;
-        for(File file: stdlibDirFile.listFiles()) {
-            this.interpret(new BufferedReader(new InputStreamReader(new FileInputStream(file))), this.rootBlock);
+        for(File file: this.stdlibDir.listFiles()) {
+            System.out.println(file.toPath().toAbsolutePath());
+            this.interpret(file, this.stdlibBlock);
         }
         this.logging = logging;
+    }
+
+    public File getVmDirectory() {
+        return vmDirectory;
     }
 }

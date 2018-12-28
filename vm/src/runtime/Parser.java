@@ -1,12 +1,18 @@
 package runtime;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class Parser {
+
+    List<Cell> parse(File file) throws IOException {
+        var reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+        var result = this.parse(reader);
+        reader.close();
+        return result;
+    }
 
     List<Cell> parse(BufferedReader reader) throws IOException {
         Optional<Cell> statement = this.parseCell(reader);

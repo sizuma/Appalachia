@@ -5,8 +5,22 @@ import java.io.*;
 public class OtherProcess {
     private final String command;
 
-    public OtherProcess(String command) {
-        this.command = command;
+    public OtherProcess(VM vm, String command) {
+        this.command = vm.getVmDirectory().toPath().toAbsolutePath().resolve(command).toString();
+    }
+
+    public String redirection(File file) throws IOException, InterruptedException {
+        var reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+        var result = this.redirection(reader);
+        reader.close();
+        return result;
+    }
+
+    public void redirectToFile(File in, File out) throws IOException, InterruptedException{
+        var result = this.redirection(in);
+        var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(out)));
+        writer.write(result);
+        writer.close();
     }
 
     public String redirection(BufferedReader reader) throws IOException, InterruptedException{
