@@ -124,9 +124,19 @@ void* callAssign(void* assign) {
 	return clone(assign);
 }
 
+void* callList(void* list) {
+	return clone(list);
+}
+
 #ifdef FORMATTER
 void* assign(void* ref, void* expression) {
 	return concat(ref, " = ", expression);
+}
+void* list(void* expressions) {
+	copy("[");
+	append(expressions);
+	append("]");
+	return dup();
 }
 #else
 void* assign(void* ref, void* expression) {
@@ -160,6 +170,49 @@ void* assign(void* ref, void* expression) {
 		append(")");
 		return dup();
 	}
+}
+void* list(void* expressions) {
+	char* str = (char*) expressions;
+	char exps[100][4096];
+	int expsN=0;
+	int expsIndex=0;
+	int index=0;
+	int inQuate=FALSE;
+	int nest = 0;
+	while(str[index] != '\0') {
+		char c = str[index];
+		if(c == '\"') inQuate = !inQuate;
+		if(!inQuate) {
+			if (c == '(' || c == '{') nest++;
+			if (c == ')' || c == '}') nest--;
+			if (c == ',' && nest == 0) {
+				exps[expsN][expsIndex] = '\0';
+				expsN++;
+				expsIndex=0;
+			} else {
+				exps[expsN][expsIndex] = c;
+				expsIndex++;
+			}
+			
+		} else {
+			exps[expsN][expsIndex] = c;
+			expsIndex++;
+		}	
+		index++;
+	}
+	copy("{");
+	append("assign(this, \"head\", List.Cons(");
+	append(exps[0]);
+	append(", null)) ");
+	append("assign(this, \"list\", List.new(head)) ");
+	for(int n=1; n<=expsN; n++) {
+		append("list.append(");
+		append(exps[n]);
+		append(") ");
+	}
+	append("list ");
+	append("}");
+	return dup();
 }
 #endif
 

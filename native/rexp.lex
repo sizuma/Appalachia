@@ -16,6 +16,8 @@ int linecounter = 1;
 ")"					{ return(RPAR); }
 "{"					{ return(LBRA); }
 "}"					{ return(RBRA); }
+"["					{ return(LSB); }
+"]"					{ return(RSB); }
 "<-"				{ return(LARROW); }
 "->"				{ return(RALLOW); }
 "."                 { return(DOT); }

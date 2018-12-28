@@ -135,8 +135,18 @@ void* callAssign(void* assign) {
 	return assign;
 }
 
+void* callList(void* list) {
+	fprintf(stderr, "Error: list literal in line %d. \n", linecounter);
+	exit(EXIT_FAILURE);
+}
+
 void* assign(void* ref, void* expression) {
 	fprintf(stderr, "Error: assign by = in line %d. \n", linecounter);
+	exit(EXIT_FAILURE);
+}
+
+void* list(void* expressions) {
+	fprintf(stderr, "Error: list literal in line %d. \n", linecounter);
 	exit(EXIT_FAILURE);
 }
 

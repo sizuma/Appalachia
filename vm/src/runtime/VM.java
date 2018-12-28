@@ -77,7 +77,6 @@ public class VM {
         var logging = this.logging;
         this.logging = false;
         for(File file: this.stdlibDir.listFiles()) {
-            System.out.println(file.toPath().toAbsolutePath());
             this.interpret(file, this.stdlibBlock);
         }
         this.logging = logging;

@@ -32,8 +32,10 @@ void* expressions2(void* expressions, void* expression);
 void* callWithArgs(void* f, void* args);
 void* callWithoutArgs(void* f);
 void* callAssign(void* assign);
+void* callList(void *list);
 
 void* assign(void* ref, void* expression);
+void* list(void* expressions);
 
 void* valueConstant(void* value);
 void* valueLambda(void* value);
