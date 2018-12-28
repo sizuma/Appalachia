@@ -82,43 +82,6 @@ void visit(Cell *pointer, int level) {
 	return;
 }
 
-/*
-    代入文のシンタックスシュガー用
-    block.a.b のような参照を代入のために block.aとb に分割する
-*/
-char* shortenRef(Cell *cell) {
-    if (cell->kind == LEAF) {
-        char* result = (char*) malloc(sizeof(char)*100);
-        strcat(result, "\"");
-        strcat(result, (char*) cell->tail);
-        strcat(result, "\"");
-
-        cell->kind = LEAF;
-        cell->head = (Cell *)"BLOCK";
-        cell->tail = (Cell *)"";
-
-        return result;
-    }
-    Cell* current = cell;
-    Cell* lastRefCell;
-    while(current->kind != LEAF) {
-        if(current->kind == NODE && strcmp((char*)current->head, "ref") == 0) {
-            lastRefCell = current;
-            current = current->tail->tail;
-        }
-    }
-    Cell* lastRefTail = lastRefCell->tail->head;
-    char* result = (char*) malloc(sizeof(char)*100);
-    strcat(result, "\"");
-    strcat(result, (char*)lastRefCell->tail->tail->tail);
-    strcat(result, "\"");
-    lastRefCell->kind = lastRefTail->kind;
-    lastRefCell->head = lastRefTail->head;
-    lastRefCell->tail = lastRefTail->tail;
-
-    return result;
-}
-
 void program(void* program) {
 }
 
@@ -173,20 +136,8 @@ void* callAssign(void* assign) {
 }
 
 void* assign(void* ref, void* expression) {
-	char* name = shortenRef(ref);
-    return node(
-        "call",
-        cons(
-            leaf("ID", "assign"),
-            cons(
-                cons(
-                    ref,
-                    leaf("STRING", name)
-                ),
-                expression
-            )
-        )
-    );
+	fprintf(stderr, "Error: assign by = in line %d. \n", linecounter);
+	exit(EXIT_FAILURE);
 }
 
 void* valueConstant(void* value) {
