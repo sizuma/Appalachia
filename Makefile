@@ -12,13 +12,16 @@ native/formatter:
 	(cd native; make formatter)
 native/compiler:
 	(cd native; make compiler)
-
-runtime: out native/formatter native/compiler vm/vm.jar
+native/preprocessor:
+	(cd native; make preprocessor)
+runtime: out native/formatter native/compiler native/preprocessor vm/vm.jar
 	cp -f native/formatter runtime/
+	cp -f native/preprocessor runtime/
 	cp -f native/compiler runtime/
 	cp -f vm/vm.jar runtime/
 	cp -rf vm/stdlib/* runtime/stdlib
 	cp -rf vm/test/* runtime/test
+
 clean-out:
 	rm -rf runtime
 clean-native:

@@ -124,9 +124,44 @@ void* callAssign(void* assign) {
 	return clone(assign);
 }
 
+#ifdef FORMATTER
 void* assign(void* ref, void* expression) {
 	return concat(ref, " = ", expression);
 }
+#else
+void* assign(void* ref, void* expression) {
+	char* refString = (char*)ref;
+	int index = strlen(refString);
+	char c = refString[index];
+	while(c != '.' && c > 0) {
+		index--;
+		c = refString[index];
+	}
+
+	if (c == 0) {
+		copy("assign(this, \"");
+		append(refString);
+		append("\", ");
+		append(expression);
+		append(")");
+		return dup();
+	} else {
+		copy("assign(");
+		char tmp[4096];
+		for(int i=0; i<index; i++) {
+			tmp[i] = refString[i];
+		}
+		tmp[index] = '\0';
+		append(tmp);
+		append(", \"");
+		append(&refString[index+1]);
+		append("\", ");
+		append(expression);
+		append(")");
+		return dup();
+	}
+}
+#endif
 
 void* valueConstant(void* value) {
 	return clone(value);
