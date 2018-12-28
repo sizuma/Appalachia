@@ -22,5 +22,5 @@ jar: compile
 clean-compile:
 	rm -rf out/
 clean-jar:
-	rm $(JAR_FILE)
+	rm -f $(JAR_FILE)
 clean: clean-compile clean-jar

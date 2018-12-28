@@ -24,6 +24,7 @@ runtime: out native/formatter native/compiler native/preprocessor vm/vm.jar
 
 clean-out:
 	rm -rf runtime/*
+	rm -rf runtime/.tmp/
 clean-native:
 	(cd native; make clean)
 clean-vm:
