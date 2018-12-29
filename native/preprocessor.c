@@ -204,14 +204,13 @@ void* list(void* expressions) {
 	append("assign(this, \"head\", List.Cons(");
 	append(exps[0]);
 	append(", null)) ");
-	append("assign(this, \"list\", List.new(head)) ");
-	for(int n=1; n<=expsN; n++) {
-		append("list.append(");
+	append("assign(this, \"list\", List.empty()) list");
+	for(int n=0; n<=expsN; n++) {
+		append(".append(");
 		append(exps[n]);
-		append(") ");
+		append(")");
 	}
-	append("list ");
-	append("}");
+	append(" }");
 	return dup();
 }
 #endif
