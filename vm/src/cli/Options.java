@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Options {
     private boolean showLog = false;
-    private boolean isInterpret = false;
+    private boolean isCompiled = false;
 
     private final List<File> files = new ArrayList<>();
 
@@ -18,19 +18,19 @@ public class Options {
         this.showLog = showLog;
     }
 
-    public boolean isInterpret() {
-        return isInterpret;
-    }
-
-    public void setInterpret(boolean interpret) {
-        isInterpret = interpret;
-    }
-
     public List<File> getFiles() {
         return files;
     }
 
     public void addFile(File file) {
         this.files.add(file);
+    }
+
+    public boolean isCompiled() {
+        return isCompiled;
+    }
+
+    public void setCompiled(boolean compiled) {
+        isCompiled = compiled;
     }
 }

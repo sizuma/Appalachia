@@ -9,10 +9,10 @@ public class CommandLineInterface {
 
         options.getFiles().forEach(file -> {
             try {
-                if (options.isInterpret()) {
-                    vm.interpret(file);
-                } else {
+                if (options.isCompiled()) {
                     vm.execTree(file);
+                } else {
+                    vm.interpret(file);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

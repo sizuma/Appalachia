@@ -46,7 +46,7 @@ public class VM {
 
     public File preprocess(File src) throws IOException, InterruptedException {
         var preprocessor = new Preprocessor(this);
-        var outputFileName = src.getName()+"@"+src.lastModified()+".preprocessed";
+        var outputFileName = src.getName()+".preprocessed";
         var output = new File(this.tempDir, outputFileName);
         preprocessor.redirectToFile(src, output);
         return output;
@@ -54,7 +54,7 @@ public class VM {
 
     public File compile(File src) throws IOException, InterruptedException {
         var compiler = new Compiler(this);
-        var outputFileName = src.getName()+"@"+src.lastModified()+".compiled";
+        var outputFileName = src.getName()+".compiled";
         var output = new File(this.tempDir, outputFileName);
         compiler.redirectToFile(src, output);
         return output;
@@ -84,6 +84,10 @@ public class VM {
 
     public File getVmDirectory() {
         return vmDirectory;
+    }
+
+    public File getTempDir() {
+        return tempDir;
     }
 
     public Block getUserBlock() {

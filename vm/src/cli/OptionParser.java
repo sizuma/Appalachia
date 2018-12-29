@@ -15,8 +15,8 @@ public class OptionParser {
                 case "--show-log":
                     option.setShowLog(true);
                     break;
-                case "--interpret":
-                    option.setInterpret(true);
+                case "--compiled":
+                    option.setCompiled(true);
                     break;
                 default:
                     option.addFile(new File(arg));
