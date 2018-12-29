@@ -75,3 +75,20 @@ block = {
 print(block.a) /* 2 */
 print(a) /* error */
 ```
+
+### OOP like block usage
+
+```
+Point2D = {
+  new = (x, y) -> {
+    this
+  }
+  this
+}
+
+p = Point2D.new(1, 2)
+
+print(p.x) /* 1 */
+print(p.y) /* 2 */
+
+```
