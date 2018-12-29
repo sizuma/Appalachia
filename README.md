@@ -37,6 +37,8 @@ f = \x -> {
 }
 ```
 
+宣言は不要で、代入を実行したときになければ作成される
+
 ### 特殊変数/組み込み関数
 
 #### this
@@ -58,4 +60,18 @@ number = {
 
 print(a) /* 1 */
 print(number) /* 3 */
+```
+
+#### this in block
+
+```
+block = {
+  a = 2
+  b = 3
+  
+  this
+}
+
+print(block.a) /* 2 */
+print(a) /* */
 ```
