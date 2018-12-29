@@ -14,7 +14,7 @@ public class Editor extends JFrame {
     private final VM vm;
 
     private final ToolBar toolBar = new ToolBar(this);
-    private final EditorPane editorPane = new EditorPane(this);
+    private final EditorTab editorTab = new EditorTab(this);
 
     public Editor() throws HeadlessException {
         try {
@@ -29,18 +29,18 @@ public class Editor extends JFrame {
         var pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         pane.add(toolBar);
-        pane.add(new JScrollPane(editorPane));
+        pane.add(new JScrollPane(editorTab));
         this.getContentPane().add(pane);
         this.setVisible(true);
         this.pack();
     }
 
     public String getContent() {
-        return this.editorPane.getText();
+        return this.editorTab.getActiveContent();
     }
 
     public void setContent(String content) {
-        this.editorPane.setText(content);
+        this.editorTab.setActiveContent(content);
     }
 
     public void format() {
@@ -59,6 +59,7 @@ public class Editor extends JFrame {
             var tempFile = this.saveTemp();
             var compiler = new Compiler(this.vm);
             var result = compiler.redirection(tempFile);
+            this.newTab(true);
             this.setContent(result);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -70,6 +71,7 @@ public class Editor extends JFrame {
             var tempFile = this.saveTemp();
             var preprocessor = new Preprocessor(this.vm);
             var result = preprocessor.redirection(tempFile);
+            this.newTab(true);
             this.setContent(result);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -83,6 +85,16 @@ public class Editor extends JFrame {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void closeTab() {
+        this.editorTab.closeTab(this.editorTab.getSelectedIndex());
+    }
+
+    public int newTab(boolean autoSelect) {
+        int tab = this.editorTab.addEditor();
+        if (autoSelect) this.editorTab.setSelectedIndex(tab);
+        return tab;
     }
 
     public File saveTemp() {
