@@ -1,26 +1,16 @@
 
-JAVAC = javac
-SRC = ./src
-SRC_JAVA = $(SRC)/cli/CommandLineInterface.java
+all: cli.jar gui.jar
 
-JAVA_OUT = ./out
-JAVAC_FLAGS = -d $(JAVA_OUT) -sourcepath $(SRC)
+out/cli/CoomandLineInterface.class: src/cli/CommandLineInterface.java
+	javac -d out/ -sourcepath src/ src/cli/CommandLineInterface.java
+cli.jar: out/cli/CoomandLineInterface.class src/cli/MANIFEST.MF
+	jar cvfm cli.jar src/cli/MANIFEST.MF -C out ./
 
-JAR = jar
-JAR_FILE = vm.jar
-MANIFEST = MANIFEST.MF
-JAR_FLAGS = cvfm $(JAR_FILE) $(MANIFEST) -C $(JAVA_OUT)
-
-all: jar
-
-compile:
-	$(JAVAC) $(SRC_JAVA) $(JAVAC_FLAGS)
-
-jar: compile
-	$(JAR) $(JAR_FLAGS) .
-
-clean-compile:
+out/gui/GUI.class: src/gui/GUI.java
+	javac -d out/ -sourcepath src/ src/gui/GUI.java
+gui.jar: out/gui/GUI.class src/gui/MANIFEST.MF
+	jar cvfm gui.jar src/gui/MANIFEST.MF -C out ./
+clean:
 	rm -rf out/
-clean-jar:
-	rm -f $(JAR_FILE)
-clean: clean-compile clean-jar
+	rm -f cli.jar
+	rm -f gui.jar
