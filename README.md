@@ -73,5 +73,5 @@ block = {
 }
 
 print(block.a) /* 2 */
-print(a) /* */
+print(a) /* error */
 ```
