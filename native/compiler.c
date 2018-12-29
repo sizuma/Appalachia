@@ -145,6 +145,11 @@ void* assign(void* ref, void* expression) {
 	exit(EXIT_FAILURE);
 }
 
+void* emptyList() {
+	fprintf(stderr, "Error: list literal in line %d. \n", linecounter);
+	exit(EXIT_FAILURE);
+}
+
 void* list(void* expressions) {
 	fprintf(stderr, "Error: list literal in line %d. \n", linecounter);
 	exit(EXIT_FAILURE);

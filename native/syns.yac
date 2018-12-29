@@ -50,7 +50,9 @@ Assign
     : Ref EQUAL Expression 
     { $$ = assign($1, $3); }
 List
-    : LSB Expressions RSB
+    : LSB RSB
+    { $$ = emptyList(); }
+    | LSB Expressions RSB
     { $$ = list($2); }
 Value
     : Constant

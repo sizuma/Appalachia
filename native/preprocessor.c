@@ -132,6 +132,10 @@ void* callList(void* list) {
 void* assign(void* ref, void* expression) {
 	return concat(ref, " = ", expression);
 }
+void* emptyList() {
+	copy("[]");
+	return dup();
+}
 void* list(void* expressions) {
 	copy("[");
 	append(expressions);
@@ -171,6 +175,11 @@ void* assign(void* ref, void* expression) {
 		return dup();
 	}
 }
+void* emptyList() {
+	copy("List.empty()");
+	return dup();
+}
+
 void* list(void* expressions) {
 	char* str = (char*) expressions;
 	char exps[100][4096];

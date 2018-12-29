@@ -35,6 +35,7 @@ void* callAssign(void* assign);
 void* callList(void *list);
 
 void* assign(void* ref, void* expression);
+void* emptyList();
 void* list(void* expressions);
 
 void* valueConstant(void* value);
