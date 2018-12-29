@@ -1,8 +1,6 @@
 package runtime;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class Block {
     private final Optional<Block> parent;
@@ -36,6 +34,9 @@ public class Block {
         return mayVariable;
     }
 
+    public Set<String> getDeclared() {
+        return this.table.keySet();
+    }
     public Block newChildBlock() {
         return new Block(Optional.of(this));
     }

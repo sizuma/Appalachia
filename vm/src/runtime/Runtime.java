@@ -4,9 +4,11 @@ import runtime.evaluate.Node;
 import runtime.evaluate.Leaf;
 
 public class Runtime {
+    private final VM vm;
     private final boolean logging;
 
-    public Runtime(boolean logging) {
+    public Runtime(VM vm, boolean logging) {
+        this.vm = vm;
         this.logging = logging;
     }
 
@@ -26,5 +28,9 @@ public class Runtime {
         if (this.logging) {
             System.out.println(string);
         }
+    }
+
+    public VM getVm() {
+        return vm;
     }
 }

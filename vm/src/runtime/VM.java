@@ -18,7 +18,7 @@ public class VM {
 
     public VM(boolean logging) throws IOException, InterruptedException {
         this.logging = logging;
-        this.runtime = new Runtime(this.logging);
+        this.runtime = new Runtime(this, this.logging);
         this.rootBlock = new RootBlock();
         this.stdlibBlock = rootBlock.newChildBlock();
         this.userBlock = this.stdlibBlock.newChildBlock();
@@ -84,5 +84,9 @@ public class VM {
 
     public File getVmDirectory() {
         return vmDirectory;
+    }
+
+    public Block getUserBlock() {
+        return userBlock;
     }
 }

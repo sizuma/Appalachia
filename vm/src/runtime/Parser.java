@@ -7,14 +7,14 @@ import java.util.Optional;
 
 public class Parser {
 
-    List<Cell> parse(File file) throws IOException {
+    public List<Cell> parse(File file) throws IOException {
         var reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         var result = this.parse(reader);
         reader.close();
         return result;
     }
 
-    List<Cell> parse(BufferedReader reader) throws IOException {
+    public List<Cell> parse(BufferedReader reader) throws IOException {
         Optional<Cell> statement = this.parseCell(reader);
         var statements = new ArrayList<Cell>();
         while (statement.isPresent()) {
