@@ -16,6 +16,7 @@ public class RootBlock extends Block {
             Or.class,
             And.class,
             If.class,
+            TypeOf.class,
 
             Plus.class,
             Minus.class,
