@@ -5,7 +5,7 @@ import java.util.List;
 
 public class VM {
     private final File jarFile = new File(System.getProperty("java.class.path"));
-    private final File vmDirectory = jarFile.getParentFile();
+    private final File vmDirectory = jarFile.toPath().toAbsolutePath().getParent().toFile();
     private final File stdlibDir = new File(vmDirectory, "stdlib");
     private final File tempDir = new File(vmDirectory, ".tmp");
 
