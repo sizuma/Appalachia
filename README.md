@@ -44,8 +44,22 @@ f = \x -> {
 #### this
 現在のブロックを参照する特殊変数
 
+#### null
+ナルを表す値
+
 #### print(anyType)
 引数をコンソールに出力する
+
+#### if(conditionValue, trueLambda, falseLambda)
+conditionValueがtrue相当のときにtrueLambda, false相当のときにfalseLambdaを実行する
+conditionValueのboolean判定:
+  - 数値のとき0.0ならfalse
+  - 文字列のとき""ならfalse
+  - nullならfalse
+  - それ以外ならtrue
+ラムダ式の結果がif式の値になる
+falseLambdaは省略可能
+省略時にconditionValueがfalseならnull
 
 ### ブロック
 `{}` で囲まれたブロック部分は別のスコープで評価される
