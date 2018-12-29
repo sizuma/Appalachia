@@ -210,10 +210,7 @@ void* list(void* expressions) {
 		index++;
 	}
 	copy("{");
-	append("assign(this, \"head\", List.Cons(");
-	append(exps[0]);
-	append(", null)) ");
-	append("assign(this, \"list\", List.empty()) list");
+	append("List.empty()");
 	for(int n=0; n<=expsN; n++) {
 		append(".append(");
 		append(exps[n]);
