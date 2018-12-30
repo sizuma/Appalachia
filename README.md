@@ -68,7 +68,8 @@ nullはnullとだけ等しい
 #### !=(a, b)
 `==(a, b)`の否定
 
-#### 算術二項演算(+,-,*,/,%)
+#### 算術二項演算(+,-,\*,/,%)
+
 `+(1, 2)`, `-(1, 2)` , ...
 
 算術演算の結果を返す
@@ -77,6 +78,34 @@ nullはnullとだけ等しい
 `<(1, 2)`, `>(1, 2)`
 
 比較演算の結果を返す
+
+#### assert(a, b)
+aとbが等しくないとエラーを発生させる
+
+#### typeof(a)
+aの型を文字列として返す
+
+#### variables(block)
+ブロックに定義されている変数名をリストで返す
+
+### 標準ライブラリ
+
+#### for(execLambda, conditionLambda)
+conditionLambdaがtrueを返す限りexecLambdaを実行する
+
+#### List
+
+##### List.Cons(car, cdr)
+List用のconsブロックを返す
+
+##### List.empty()
+空リストを返す
+
+#### list.append(element)
+listにelementを結合した新しいListを返す
+
+#### list.foreach(lambda)
+listの各要素を引数にしてlambdaを呼び出す
 
 ### ブロック
 `{}` で囲まれたブロック部分は別のスコープで評価される
