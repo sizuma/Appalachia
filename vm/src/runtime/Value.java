@@ -41,9 +41,14 @@ public class Value {
 
     @Override
     public String toString() {
-        if (this.getKind() != Kind.BLOCK) {
-            return kind+"{" + object +"}";
-        } else return "Block{-}";
+        switch (this.getKind()) {
+            case BLOCK:
+                return "Block(~)";
+            case LAMBDA:
+                return "Lambda(~)";
+            default:
+                return kind+"(" + object +")";
+        }
     }
 
     public boolean isTrue() {

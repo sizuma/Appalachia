@@ -13,15 +13,16 @@ public class Print extends BuiltIn {
 
     @Override
     public Value performBuildIn(Runtime runtime, List<Value> args) {
+        var builder = new StringBuilder();
+
         for(int index=0; index<args.size(); index++) {
             var arg = args.get(index);
-            System.out.print(arg.getObject());
+            builder.append(arg);
             if (index < args.size()-1) {
-                System.out.print(",");
+                builder.append(",");
             }
         }
-
-        System.out.println();
+        runtime.getVm().getLogger().info(builder.toString());
         return Value.nop;
     }
 }

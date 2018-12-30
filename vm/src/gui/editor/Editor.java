@@ -16,12 +16,8 @@ public class Editor extends JFrame {
     private final ToolBar toolBar = new ToolBar(this);
     private final EditorTab editorTab = new EditorTab(this);
 
-    public Editor() throws HeadlessException {
-        try {
-            this.vm = new VM();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Editor(VM vm) throws HeadlessException {
+        this.vm = vm;
     }
 
     public void open() {

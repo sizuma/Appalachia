@@ -1,21 +1,23 @@
 package cli;
 
+import log.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Options {
-    private boolean showLog = false;
     private boolean isCompiled = false;
+    private Logger.Level level = Logger.Level.INFO;
 
     private final List<File> files = new ArrayList<>();
 
-    public boolean isShowLog() {
-        return showLog;
+    public Logger.Level getLevel() {
+        return level;
     }
 
-    public void setShowLog(boolean showLog) {
-        this.showLog = showLog;
+    public void setLevel(Logger.Level level) {
+        this.level = level;
     }
 
     public List<File> getFiles() {

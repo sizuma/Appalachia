@@ -49,9 +49,14 @@ public class Cell {
 
     @Override
     public String toString() {
-        return kind+"{" +
-                "car : " + car +
-                ", cdr : " + cdr +
-                '}';
+        var builder = new StringBuilder();
+        builder.append(this.getKind());
+        builder.append("(");
+        builder.append(car);
+        builder.append(", ");
+        builder.append(cdr);
+        builder.append(")");
+        return builder.toString();
     }
+
 }

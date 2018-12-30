@@ -1,5 +1,7 @@
 package cli;
 
+import log.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,8 +14,10 @@ public class OptionParser {
             var arg = args.get(0).strip();
             args.remove(0);
             switch (arg) {
-                case "--show-log":
-                    option.setShowLog(true);
+                case "--log-level":
+                    var nextArgs = args.get(0);
+                    args.remove(0);
+                    option.setLevel(Logger.Level.valueOf(nextArgs.toUpperCase()));
                     break;
                 case "--compiled":
                     option.setCompiled(true);

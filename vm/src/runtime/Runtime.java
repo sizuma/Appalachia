@@ -12,23 +12,24 @@ import java.util.stream.Collectors;
 
 public class Runtime {
     private final VM vm;
-    private final boolean logging;
 
-    public Runtime(VM vm, boolean logging) {
+    public Runtime(VM vm) {
         this.vm = vm;
-        this.logging = logging;
     }
 
     public Value evaluate(Block block, Cell cell) {
-        this.log("evaluate "+cell+" in "+block);
-
+        var result = Value.nop;
         switch (cell.getKind()) {
             case NODE:
-                return Node.evaluateNode(this, block, cell);
+                result = Node.evaluateNode(this, block, cell);
+                break;
             case LEAF:
-                return Leaf.evaluateLeaf(this, block, cell);
+                result = Leaf.evaluateLeaf(this, block, cell);
+                break;
         }
-        return Value.nop;
+        this.getVm().getLogger().trace("evaluate "+cell);
+        this.getVm().getLogger().trace("result "+result);
+        return result;
     }
 
     public List<Value> evaluate(Block block, String src) {
@@ -44,12 +45,6 @@ public class Runtime {
             return cells.stream().map(cell -> this.evaluate(block, cell)).collect(Collectors.toList());
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public void log(String string) {
-        if (this.logging) {
-            System.out.println(string);
         }
     }
 
