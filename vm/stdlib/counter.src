@@ -1,0 +1,12 @@
+Counter = {
+	new = \ initialCount -> {
+		self = this
+		count = initialCount
+		countUp = \ -> {
+			self.count = +(count, 1)
+			self.count
+		}
+		this
+	}
+	this
+}
