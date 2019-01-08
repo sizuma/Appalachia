@@ -16,7 +16,7 @@ public class Variables extends BuiltIn {
         var value = args.get(0);
         var block = (Block) value.getObject();
         var names = block.getDeclared();
-        var list = "["+ names.stream().reduce((l,r) -> "\""+l+"\""+", "+"\""+r+"\"").get()+"]";
+        var list = "["+ names.stream().map(each ->  "\""+each+"\"").reduce((l,r) -> l+", "+r).get()+"]";
         return runtime.evaluate(block, list).get(0);
     }
 }

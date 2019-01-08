@@ -18,6 +18,7 @@ public class RootBlock extends Block {
             If.class,
             TypeOf.class,
             Variables.class,
+            GetVariable.class,
 
             Plus.class,
             Minus.class,

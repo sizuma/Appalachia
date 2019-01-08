@@ -1,0 +1,12 @@
+merge = \ distBlock, sourceBlocks -> {
+	mergeOne = \ dist, src -> {
+		variablesIn(src).foreach(\variableName -> {
+			assign(dist, variableName, getVariable(src, variableName))
+		})
+	}
+
+	sourceBlocks.foreach(\src -> {
+		mergeOne(distBlock, src)
+	})
+	distBlock
+}
