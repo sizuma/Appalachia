@@ -3,6 +3,22 @@ List = {
 		this
 	}
 
+	range = \ from, to, inc -> {
+		self = this
+		inc = orDefault(inc, 1)
+		list = List.empty()
+		index = from
+		each = \ -> {
+			self.list = self.list.append(index)
+			self.index = +(self.index, inc)
+		}
+		while = \ -> {
+			<(index, to)
+		}
+		for(each, while)
+		list
+	}
+
 	new = \ headCons -> {
 		self = this
 		append = \ e -> {
@@ -10,6 +26,12 @@ List = {
 		}
 		foreach = \ f -> {
 			List.foreach(self, f)
+		}
+		map = \ f -> {
+			List.map(self, f)
+		}
+		filter = \ f -> {
+			List.filter(self, f)
 		}
 		this
 	}
@@ -54,5 +76,26 @@ List = {
 		    f(head)
 		})
 	}
+
+	map = \ list, lambda -> {
+		self = this
+		newList = List.empty()
+		list.foreach(\ each -> {
+			self.newList = self.newList.append(lambda(each))
+		})
+		newList
+	}
+
+	filter = \ list, lambda -> {
+		self = this
+		newList = List.empty()
+		list.foreach(\ each -> {
+			if(lambda(each), \ -> {
+				self.newList = self.newList.append(each)
+			})
+		})
+		newList
+	}
+
 	this
 }

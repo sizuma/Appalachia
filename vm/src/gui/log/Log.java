@@ -17,7 +17,7 @@ public class Log extends JFrame {
     public void open() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(new JScrollPane(pane));
+        this.setSize(new Dimension(800, 600));
         this.setVisible(true);
-        this.pack();
     }
 }

@@ -1,0 +1,7 @@
+orDefault = \ value, default -> {
+    if(==(value, null), \ -> {
+        default
+    }, \ -> {
+        value
+    })
+}
