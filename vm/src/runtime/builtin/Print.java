@@ -17,12 +17,12 @@ public class Print extends BuiltIn {
 
         for(int index=0; index<args.size(); index++) {
             var arg = args.get(index);
-            builder.append(arg);
+            builder.append(arg.getObject());
             if (index < args.size()-1) {
                 builder.append(",");
             }
         }
-        runtime.getVm().getLogger().info(builder.toString());
+        runtime.getVm().getLogger().print(builder.toString());
         return Value.nop;
     }
 }

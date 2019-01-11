@@ -11,7 +11,7 @@ public class EditorTab extends JTabbedPane {
     public EditorTab(Editor editor) {
         this.editor = editor;
         this.editors.add(new EditorPane(editor, EditorPane.Type.SOURCE));
-        this.addTab("file 1", this.editors.get(0));
+        this.addTab("file 1", new JScrollPane(this.editors.get(0)));
     }
 
     public String getActiveContent() {
@@ -32,7 +32,7 @@ public class EditorTab extends JTabbedPane {
     public int addEditor(EditorPane.Type type) {
         var editorPane = new EditorPane(editor, type);
         this.editors.add(editorPane);
-        this.addTab("file "+this.editors.size(), editorPane);
+        this.addTab("file "+this.editors.size(), new JScrollPane(editorPane));
         return this.editors.size()-1;
     }
 

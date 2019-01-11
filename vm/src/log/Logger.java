@@ -6,7 +6,9 @@ public interface Logger {
         INFO,
         WARN,
         ERROR,
-        FATAL
+        FATAL,
+
+        PRINT,
     }
 
     void log(String log, Level level);
@@ -41,5 +43,10 @@ public interface Logger {
     default void fatal(String log) {
         if(!shouldLog(Level.FATAL)) return;
         this.log(log, Level.FATAL);
+    }
+
+    default void print(String log) {
+        if(!shouldLog(Level.PRINT)) return;
+        this.log(log, Level.PRINT);
     }
 }

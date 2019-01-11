@@ -26,7 +26,7 @@ public class Editor extends JFrame {
         var pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         pane.add(toolBar);
-        pane.add(new JScrollPane(editorTab));
+        pane.add(editorTab);
         this.getContentPane().add(pane);
         this.setVisible(true);
         this.pack();

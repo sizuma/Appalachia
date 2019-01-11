@@ -24,6 +24,7 @@ public class Console implements Logger {
     @Override
     public void log(String log, Level level) {
         switch (level) {
+            case PRINT:
             case TRACE:
             case INFO:
             case WARN:
