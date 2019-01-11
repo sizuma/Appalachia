@@ -22,6 +22,7 @@ public class Editor extends JFrame {
 
     public void open() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setJMenuBar(new MenuBar(this));
         var pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         pane.add(toolBar);
@@ -37,6 +38,34 @@ public class Editor extends JFrame {
 
     public void setContent(String content) {
         this.editorTab.setActiveContent(content);
+    }
+
+    public void openFile(File file) {
+        try {
+            var reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            var stringBuilder = new StringBuilder();
+            var read = reader.readLine();
+            while (read != null) {
+                stringBuilder.append(read);
+                stringBuilder.append("\n");
+                read = reader.readLine();
+            }
+            reader.close();
+            this.newTab(true, EditorPane.Type.SOURCE);
+            this.setContent(stringBuilder.toString());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void saveToFile(File file) {
+        try {
+            var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+            writer.write(this.getContent());
+            writer.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void format() {

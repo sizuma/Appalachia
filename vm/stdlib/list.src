@@ -1,8 +1,7 @@
 List = {
-	Cons = \car, cdr -> {
+	Cons = \ car, cdr -> {
 		this
 	}
-
 	range = \ from, to, inc -> {
 		self = this
 		inc = orDefault(inc, 1)
@@ -18,7 +17,6 @@ List = {
 		for(each, while)
 		list
 	}
-
 	new = \ headCons -> {
 		self = this
 		append = \ e -> {
@@ -35,34 +33,30 @@ List = {
 		}
 		this
 	}
-
-    empty = \ -> {
-        List.new(null)
-    }
-
+	empty = \ -> {
+		List.new(null)
+	}
 	append = \ list, e -> {
 		self = this
-	    head = null
-	    tail = head
-
-	    list.foreach(\each -> {
-	        cons = List.Cons(each,null)
-	        if(==(head, null), \ -> {
-	            self.head = cons
-	        }, \ -> {
-	            self.tail.cdr = cons
-	        })
-	        self.tail = cons
-	    })
-	    cons = List.Cons(e, null)
-	    if(==(tail, null), \ -> {
-	    	List.new(cons)
-	    }, \ -> {
+		head = null
+		tail = head
+		list.foreach(\ each -> {
+			cons = List.Cons(each, null)
+			if(==(head, null), \ -> {
+				self.head = cons
+			}, \ -> {
+				self.tail.cdr = cons
+			})
+			self.tail = cons
+		})
+		cons = List.Cons(e, null)
+		if(==(tail, null), \ -> {
+			List.new(cons)
+		}, \ -> {
 			self.tail.cdr = cons
-	    	List.new(head)
-	    })
+			List.new(head)
+		})
 	}
-
 	foreach = \ list, lambda -> {
 		f = \ current -> {
 			lambda(current.car)
@@ -73,10 +67,9 @@ List = {
 		}
 		head = list.headCons
 		if(!=(head, null), \ -> {
-		    f(head)
+			f(head)
 		})
 	}
-
 	map = \ list, lambda -> {
 		self = this
 		newList = List.empty()
@@ -85,7 +78,6 @@ List = {
 		})
 		newList
 	}
-
 	filter = \ list, lambda -> {
 		self = this
 		newList = List.empty()
@@ -96,6 +88,5 @@ List = {
 		})
 		newList
 	}
-
 	this
 }
