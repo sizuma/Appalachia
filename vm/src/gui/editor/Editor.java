@@ -51,11 +51,12 @@ public class Editor extends JFrame {
     }
 
     public void compile() {
+        if (this.editorTab.getActiveType() != EditorPane.Type.PREPROCESSED) this.preprocess();
         try {
             var tempFile = this.saveTemp();
             var compiler = new Compiler(this.vm);
             var result = compiler.redirection(tempFile);
-            this.newTab(true);
+            this.newTab(true, EditorPane.Type.COMPILED);
             this.setContent(result);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -63,18 +64,21 @@ public class Editor extends JFrame {
     }
 
     public void preprocess() {
+        this.format();
         try {
             var tempFile = this.saveTemp();
             var preprocessor = new Preprocessor(this.vm);
             var result = preprocessor.redirection(tempFile);
-            this.newTab(true);
+            this.newTab(true, EditorPane.Type.PREPROCESSED);
             this.setContent(result);
+            this.format();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     public void exec() {
+        if (this.editorTab.getActiveType() != EditorPane.Type.COMPILED) this.compile();
         try {
             var tempFile = this.saveTemp();
             vm.execTree(tempFile);
@@ -87,8 +91,8 @@ public class Editor extends JFrame {
         this.editorTab.closeTab(this.editorTab.getSelectedIndex());
     }
 
-    public int newTab(boolean autoSelect) {
-        int tab = this.editorTab.addEditor();
+    public int newTab(boolean autoSelect, EditorPane.Type type) {
+        int tab = this.editorTab.addEditor(type);
         if (autoSelect) this.editorTab.setSelectedIndex(tab);
         return tab;
     }

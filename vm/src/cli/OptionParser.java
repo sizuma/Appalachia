@@ -19,7 +19,7 @@ public class OptionParser {
                     args.remove(0);
                     option.setLevel(Logger.Level.valueOf(nextArgs.toUpperCase()));
                     break;
-                case "--compiled":
+                case "--COMPILED":
                     option.setCompiled(true);
                     break;
                 default:

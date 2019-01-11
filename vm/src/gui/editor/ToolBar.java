@@ -32,7 +32,7 @@ public class ToolBar extends JPanel {
         preprocessButton.addActionListener(ev -> this.editor.preprocess());
         compileButton.addActionListener(ev -> this.editor.compile());
         execButton.addActionListener(ev -> this.editor.exec());
-        newButton.addActionListener(ev -> this.editor.newTab(true));
+        newButton.addActionListener(ev -> this.editor.newTab(true, EditorPane.Type.SOURCE));
         closeButton.addActionListener(ev -> this.editor.closeTab());
     }
 }

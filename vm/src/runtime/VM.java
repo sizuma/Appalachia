@@ -61,7 +61,7 @@ public class VM {
     public File preprocess(File src) {
         try {
             var preprocessor = new Preprocessor(this);
-            var outputFileName = src.getName()+".preprocessed";
+            var outputFileName = src.getName()+".PREPROCESSED";
             var output = new File(this.tempDir, outputFileName);
             preprocessor.redirectToFile(src, output);
             return output;
@@ -74,7 +74,7 @@ public class VM {
     public File compile(File src) {
         try {
             var compiler = new Compiler(this);
-            var outputFileName = src.getName()+".compiled";
+            var outputFileName = src.getName()+".COMPILED";
             var output = new File(this.tempDir, outputFileName);
             compiler.redirectToFile(src, output);
             return output;

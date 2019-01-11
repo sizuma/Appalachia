@@ -10,7 +10,7 @@ public class EditorTab extends JTabbedPane {
 
     public EditorTab(Editor editor) {
         this.editor = editor;
-        this.editors.add(new EditorPane(editor));
+        this.editors.add(new EditorPane(editor, EditorPane.Type.SOURCE));
         this.addTab("file 1", this.editors.get(0));
     }
 
@@ -19,13 +19,18 @@ public class EditorTab extends JTabbedPane {
         return this.editors.get(index).getText();
     }
 
+    public EditorPane.Type getActiveType() {
+        var index = this.getSelectedIndex();
+        return this.editors.get(index).getType();
+    }
+
     public void setActiveContent(String content) {
         var index = this.getSelectedIndex();
         this.editors.get(index).setText(content);
     }
 
-    public int addEditor() {
-        var editorPane = new EditorPane(editor);
+    public int addEditor(EditorPane.Type type) {
+        var editorPane = new EditorPane(editor, type);
         this.editors.add(editorPane);
         this.addTab("file "+this.editors.size(), editorPane);
         return this.editors.size()-1;
