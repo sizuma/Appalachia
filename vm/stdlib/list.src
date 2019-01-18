@@ -31,6 +31,15 @@ List = {
 		filter = \ f -> {
 			List.filter(self, f)
 		}
+		head = \ -> {
+			List.head(self)
+		}
+		tail = \ -> {
+			List.tail(self)
+		}
+		get = \ index -> {
+			List.get(self, index)
+		}
 		this
 	}
 	empty = \ -> {
@@ -87,6 +96,19 @@ List = {
 			})
 		})
 		newList
+	}
+	head = \ list -> {
+		list.headCons.car
+	}
+	tail = \ list -> {
+		List.new(list.headCons.cdr)
+	}
+	get = \ list, index -> {
+		if(==(index, 0), \ -> {
+			List.head(list)
+		}, \ -> {
+			List.get(List.tail(list), -(index, 1))
+		})
 	}
 	this
 }
