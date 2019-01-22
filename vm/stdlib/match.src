@@ -1,0 +1,14 @@
+match = \ conditions -> {
+	if(conditions.isEmpty(), \ -> {
+		null
+	}, \ -> {
+		condPair = conditions.head()
+		cond = condPair.get(0)
+		f = condPair.get(1)
+		if(cond(), \ -> {
+			f()
+		}, \ -> {
+			match(conditions.tail())
+		})
+	})
+}

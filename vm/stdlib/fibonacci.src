@@ -1,0 +1,24 @@
+fibonacci = \ n -> {
+	isFirst = \ -> {
+		==(n, 1)
+	}
+	isSecond = \ -> {
+		==(n, 2)
+	}
+	isOther = \ -> {
+		>(n, 2)
+	}
+	returnOne = \ -> {
+		1
+	}
+	returnSumPrevious2 = \ -> {
+		n1 = -(n, 1)
+		n2 = -(n, 2)
+		+(fibonacci(n1), fibonacci(n2))
+	}
+	match([
+		[isFirst, returnOne],
+		[isSecond, returnOne],
+		[isOther, returnSumPrevious2]
+	])
+}

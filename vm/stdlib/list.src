@@ -40,6 +40,9 @@ List = {
 		get = \ index -> {
 			List.get(self, index)
 		}
+		isEmpty = \ -> {
+			List.isEmpty(self)
+		}
 		this
 	}
 	empty = \ -> {
@@ -109,6 +112,9 @@ List = {
 		}, \ -> {
 			List.get(List.tail(list), -(index, 1))
 		})
+	}
+	isEmpty = \ list -> {
+		==(list.headCons, null)
 	}
 	this
 }
