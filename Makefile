@@ -24,6 +24,8 @@ runtime: out native/formatter native/compiler native/preprocessor vm/cli.jar vm/
 	cp -f vm/gui.jar runtime/
 	cp -rf vm/stdlib/* runtime/stdlib
 	cp -rf vm/test/* runtime/test
+editor: runtime
+	java -jar ./runtime/gui.jar
 
 clean-out:
 	rm -rf runtime/*
