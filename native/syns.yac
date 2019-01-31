@@ -7,82 +7,82 @@
 
 Program
 	: Statements
-    { program($1); }
+	{ program($1); }
 Statements
 	: Expression
-    { $$ = statements1($1); }
+	{ $$ = statements1($1); }
 	| Statements Expression
-    { $$ = statements2($1, $2); }
+	{ $$ = statements2($1, $2); }
 
 Block
-    : LBRA BlockBody RBRA
-    { $$ = block($2); }
+	: LBRA BlockBody RBRA
+	{ $$ = block($2); }
 
 BlockBody
-    : Expression
-    { $$ = blockBody1($1); }
-    | BlockBody Expression
-    { $$ = blockBody2($1, $2); }
+	: Expression
+	{ $$ = blockBody1($1); }
+	| BlockBody Expression
+	{ $$ = blockBody2($1, $2); }
 
 Expression
 	: Call
-    { $$ = expressionCall($1); }
+	{ $$ = expressionCall($1); }
 	| Value
-    { $$ = expressionValue($1); }
+	{ $$ = expressionValue($1); }
 
 Expressions
 	: Expression
-    { $$ = expressions1($1); }
+	{ $$ = expressions1($1); }
 	| Expressions COMMA Expression
-    { $$ = expressions2($1, $3); }
+	{ $$ = expressions2($1, $3); }
 
 Call
 	: Expression LPAR Expressions RPAR
-    { $$ = callWithArgs($1, $3); }
+	{ $$ = callWithArgs($1, $3); }
 	| Expression LPAR RPAR
-    { $$ = callWithoutArgs($1); }
-    | Assign
-    { $$ = callAssign($1); }
-    | List
-    { $$ = callList($1); }
+	{ $$ = callWithoutArgs($1); }
+	| Assign
+	{ $$ = callAssign($1); }
+	| List
+	{ $$ = callList($1); }
 
 Assign
-    : Ref EQUAL Expression 
-    { $$ = assign($1, $3); }
+	: Ref EQUAL Expression
+	{ $$ = assign($1, $3); }
 List
-    : LSB RSB
-    { $$ = emptyList(); }
-    | LSB Expressions RSB
-    { $$ = list($2); }
+	: LSB RSB
+	{ $$ = emptyList(); }
+	| LSB Expressions RSB
+	{ $$ = list($2); }
 Value
-    : Constant
-    { $$ = valueConstant($1); }
-    | Lambda
-    { $$ = valueLambda($1); }
-    | Block
-    { $$ = valueBlock($1); }
-    | Ref
-    { $$ = valueRef($1); }
+	: Constant
+	{ $$ = valueConstant($1); }
+	| Lambda
+	{ $$ = valueLambda($1); }
+	| Block
+	{ $$ = valueBlock($1); }
+	| Ref
+	{ $$ = valueRef($1); }
 
 Lambda
-    : LAMBDA Expressions RALLOW Block
-    { $$ = lambdaWithArgs($2, $4); }
-    | LAMBDA RALLOW Block
-    { $$ = lambdaWithoutArgs($3); }
+	: LAMBDA Expressions RALLOW Block
+	{ $$ = lambdaWithArgs($2, $4); }
+	| LAMBDA RALLOW Block
+	{ $$ = lambdaWithoutArgs($3); }
 
 Ref
-    : ID
-    { $$ = ref(yytext); }
-    | Expression DOT ID
-    { $$ = nestedRef($1, yytext); }
+	: ID
+	{ $$ = ref(yytext); }
+	| Expression DOT ID
+	{ $$ = nestedRef($1, yytext); }
 
 Constant
 	: NUMBER
-    { $$ = number(yytext); }
+	{ $$ = number(yytext); }
 	| STRING
-    { $$ = string(yytext); }
+	{ $$ = string(yytext); }
 	| THIS
-    { $$ = this(yytext); }
+	{ $$ = this(yytext); }
 %%
 
 #include "lex.yy.c"

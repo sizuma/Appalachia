@@ -3,15 +3,15 @@ int linecounter = 1;
 %}
 %option nounput
 %%
-"this"                          { return(THIS); }
-[a-zA-Z][a-zA-Z0-9]*			{ return(ID); }
-"-"*[0-9]+							{ return(NUMBER); }
-"-"*[0-9]+"."[0-9]+					{ return(NUMBER); }
-\"[^\"]*\" 						{ return(STRING); }
-"\\"                 { return(LAMBDA); }
-"=="                { return(ID); }
-"="                { return(EQUAL); }
-"!="                { return(ID); }
+"this" 				{ return(THIS); }
+[a-zA-Z][a-zA-Z0-9]*	{ return(ID); }
+"-"*[0-9]+				{ return(NUMBER); }
+"-"*[0-9]+"."[0-9]+		{ return(NUMBER); }
+\"[^\"]*\" 				{ return(STRING); }
+"\\"				{ return(LAMBDA); }
+"=="				{ return(ID); }
+"="					{ return(EQUAL); }
+"!="				{ return(ID); }
 "("					{ return(LPAR); }
 ")"					{ return(RPAR); }
 "{"					{ return(LBRA); }
@@ -20,15 +20,15 @@ int linecounter = 1;
 "]"					{ return(RSB); }
 "<-"				{ return(LARROW); }
 "->"				{ return(RALLOW); }
-"."                 { return(DOT); }
+"."					{ return(DOT); }
 ","					{ return(COMMA); }
 "\n"				{ linecounter++; }
 "\r\n"				{ linecounter++; }
 "\r"				{ linecounter++; }
-" "|"\t"				{ }
-"/*"					{ comment(); }
+" "|"\t"			{ }
+"/*"				{ comment(); }
 
-["+" "\-" "*" "/" "<" ">" "%"]                  { return(ID); }
+["+" "\-" "*" "/" "<" ">" "%"]	{ return(ID); }
 
 
 %%
